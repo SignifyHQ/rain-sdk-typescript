@@ -8,7 +8,7 @@ const client = new RainHelloWorld({
 });
 
 describe('resource payments', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('initiate: only required params', async () => {
     const responsePromise = client.payments.initiate({
       amount: 0,
@@ -23,7 +23,7 @@ describe('resource payments', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('initiate: required and optional params', async () => {
     const response = await client.payments.initiate({
       amount: 0,

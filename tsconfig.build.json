@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "rain-hello-world/*": ["dist/src/*"],
-      "rain-hello-world": ["dist/src/index.ts"]
+      "rain-hello-world/*": ["./dist/src/*"],
+      "rain-hello-world": ["./dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,

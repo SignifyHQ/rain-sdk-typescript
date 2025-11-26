@@ -8,7 +8,7 @@ const client = new RainHelloWorld({
 });
 
 describe('resource ubo', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.applications.company.ubo.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       companyId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
@@ -22,7 +22,7 @@ describe('resource ubo', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.applications.company.ubo.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       companyId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
@@ -44,7 +44,7 @@ describe('resource ubo', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('uploadDocument: only required params', async () => {
     const responsePromise = client.applications.company.ubo.uploadDocument(
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
@@ -59,7 +59,7 @@ describe('resource ubo', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('uploadDocument: required and optional params', async () => {
     const response = await client.applications.company.ubo.uploadDocument(
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
