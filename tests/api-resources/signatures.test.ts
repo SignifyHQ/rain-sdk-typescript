@@ -8,7 +8,7 @@ const client = new RainHelloWorld({
 });
 
 describe('resource signatures', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrievePaymentSignature: only required params', async () => {
     const responsePromise = client.signatures.retrievePaymentSignature({
       token: 'token',
@@ -24,7 +24,7 @@ describe('resource signatures', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrievePaymentSignature: required and optional params', async () => {
     const response = await client.signatures.retrievePaymentSignature({
       token: 'token',
@@ -34,7 +34,7 @@ describe('resource signatures', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieveWithdrawalSignature: only required params', async () => {
     const responsePromise = client.signatures.retrieveWithdrawalSignature({
       token: 'token',
@@ -51,7 +51,7 @@ describe('resource signatures', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieveWithdrawalSignature: required and optional params', async () => {
     const response = await client.signatures.retrieveWithdrawalSignature({
       token: 'token',

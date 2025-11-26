@@ -8,7 +8,7 @@ const client = new RainHelloWorld({
 });
 
 describe('resource user', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.applications.user.create({
       accountPurpose: 'accountPurpose',
@@ -28,7 +28,7 @@ describe('resource user', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.applications.user.create({
       accountPurpose: 'accountPurpose',
@@ -47,7 +47,7 @@ describe('resource user', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.applications.user.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
@@ -59,7 +59,7 @@ describe('resource user', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.applications.user.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
@@ -71,7 +71,7 @@ describe('resource user', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -105,7 +105,7 @@ describe('resource user', () => {
     ).rejects.toThrow(RainHelloWorld.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('initiate', async () => {
     const responsePromise = client.applications.user.initiate();
     const rawResponse = await responsePromise.asResponse();
@@ -117,7 +117,7 @@ describe('resource user', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('initiate: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -133,7 +133,7 @@ describe('resource user', () => {
     ).rejects.toThrow(RainHelloWorld.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('reapply: only required params', async () => {
     const responsePromise = client.applications.user.reapply('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       accountPurpose: 'accountPurpose',
@@ -163,7 +163,7 @@ describe('resource user', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('reapply: required and optional params', async () => {
     const response = await client.applications.user.reapply('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       accountPurpose: 'accountPurpose',
@@ -188,7 +188,7 @@ describe('resource user', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('uploadDocument: only required params', async () => {
     const responsePromise = client.applications.user.uploadDocument('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       document: await toFile(Buffer.from('# my file contents'), 'README.md'),
@@ -202,7 +202,7 @@ describe('resource user', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('uploadDocument: required and optional params', async () => {
     const response = await client.applications.user.uploadDocument('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       document: await toFile(Buffer.from('# my file contents'), 'README.md'),

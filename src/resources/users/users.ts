@@ -359,8 +359,7 @@ export interface UserCreateCardParams {
   limit?: CardsAPI.IssuingCardLimit;
 
   /**
-   * Represents a physical address with components like street, city, region, postal
-   * code, and country.
+   * The address to ship the card, if it is a physical card
    */
   shipping?: UserCreateCardParams.Shipping;
 
@@ -403,8 +402,7 @@ export namespace UserCreateCardParams {
   }
 
   /**
-   * Represents a physical address with components like street, city, region, postal
-   * code, and country.
+   * The address to ship the card, if it is a physical card
    */
   export interface Shipping extends CompanyAPI.PhysicalAddress {
     /**

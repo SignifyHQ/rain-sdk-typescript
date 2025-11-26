@@ -7,10 +7,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "rain-hello-world/*": ["src/*"],
-      "rain-hello-world": ["src/index.ts"]
+      "rain-hello-world/*": ["./src/*"],
+      "rain-hello-world": ["./src/index.ts"]
     },
     "noEmit": true,
 
