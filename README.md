@@ -36,7 +36,12 @@ const issuingCompany = await client.applications.company.create({
     postalCode: 'postalCode',
     region: 'region',
   },
-  entity: { name: 'name', registrationNumber: 'registrationNumber', taxId: 'taxId', website: 'website' },
+  entity: {
+    name: 'name',
+    registrationNumber: 'registrationNumber',
+    taxId: 'taxId',
+    website: 'website',
+  },
   initialUser: {
     address: {
       city: 'city',
@@ -117,7 +122,12 @@ const params: RainHelloWorld.Applications.CompanyCreateParams = {
     postalCode: 'postalCode',
     region: 'region',
   },
-  entity: { name: 'name', registrationNumber: 'registrationNumber', taxId: 'taxId', website: 'website' },
+  entity: {
+    name: 'name',
+    registrationNumber: 'registrationNumber',
+    taxId: 'taxId',
+    website: 'website',
+  },
   initialUser: {
     address: {
       city: 'city',
@@ -174,9 +184,8 @@ const params: RainHelloWorld.Applications.CompanyCreateParams = {
     },
   ],
 };
-const issuingCompany: RainHelloWorld.Applications.IssuingCompany = await client.applications.company.create(
-  params,
-);
+const issuingCompany: RainHelloWorld.Applications.IssuingCompany =
+  await client.applications.company.create(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -238,7 +247,12 @@ const issuingCompany = await client.applications.company
       postalCode: 'postalCode',
       region: 'region',
     },
-    entity: { name: 'name', registrationNumber: 'registrationNumber', taxId: 'taxId', website: 'website' },
+    entity: {
+      name: 'name',
+      registrationNumber: 'registrationNumber',
+      taxId: 'taxId',
+      website: 'website',
+    },
     initialUser: {
       address: {
         city: 'city',
@@ -335,7 +349,73 @@ const client = new RainHelloWorld({
 });
 
 // Or, configure per-request:
-await client.applications.company.create({ address: { city: 'city', country: 'country', countryCode: 'xx', line1: 'line1', postalCode: 'postalCode', region: 'region' }, entity: { name: 'name', registrationNumber: 'registrationNumber', taxId: 'taxId', website: 'website' }, initialUser: { address: { city: 'city', country: 'country', countryCode: 'xx', line1: 'line1', postalCode: 'postalCode', region: 'region' }, birthDate: '2000-01-01', countryOfIssue: 'xx', email: 'email', firstName: 'firstName', lastName: 'lastName', nationalId: 'nationalId', ipAddress: 'ipAddress', isTermsOfServiceAccepted: true }, name: 'REPLACE_ME', representatives: [{ address: { city: 'city', country: 'country', countryCode: 'xx', line1: 'line1', postalCode: 'postalCode', region: 'region' }, birthDate: '2000-01-01', countryOfIssue: 'xx', email: 'email', firstName: 'firstName', lastName: 'lastName', nationalId: 'nationalId' }], ultimateBeneficialOwners: [{ address: { city: 'city', country: 'country', countryCode: 'xx', line1: 'line1', postalCode: 'postalCode', region: 'region' }, birthDate: '2000-01-01', countryOfIssue: 'xx', email: 'email', firstName: 'firstName', lastName: 'lastName', nationalId: 'nationalId' }] }, {
+await client.applications.company.create({
+  address: {
+  city: 'city',
+  country: 'country',
+  countryCode: 'xx',
+  line1: 'line1',
+  postalCode: 'postalCode',
+  region: 'region',
+},
+  entity: {
+  name: 'name',
+  registrationNumber: 'registrationNumber',
+  taxId: 'taxId',
+  website: 'website',
+},
+  initialUser: {
+  address: {
+  city: 'city',
+  country: 'country',
+  countryCode: 'xx',
+  line1: 'line1',
+  postalCode: 'postalCode',
+  region: 'region',
+},
+  birthDate: '2000-01-01',
+  countryOfIssue: 'xx',
+  email: 'email',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  nationalId: 'nationalId',
+  ipAddress: 'ipAddress',
+  isTermsOfServiceAccepted: true,
+},
+  name: 'REPLACE_ME',
+  representatives: [{
+  address: {
+  city: 'city',
+  country: 'country',
+  countryCode: 'xx',
+  line1: 'line1',
+  postalCode: 'postalCode',
+  region: 'region',
+},
+  birthDate: '2000-01-01',
+  countryOfIssue: 'xx',
+  email: 'email',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  nationalId: 'nationalId',
+}],
+  ultimateBeneficialOwners: [{
+  address: {
+  city: 'city',
+  country: 'country',
+  countryCode: 'xx',
+  line1: 'line1',
+  postalCode: 'postalCode',
+  region: 'region',
+},
+  birthDate: '2000-01-01',
+  countryOfIssue: 'xx',
+  email: 'email',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  nationalId: 'nationalId',
+}],
+}, {
   maxRetries: 5,
 });
 ```
@@ -352,7 +432,73 @@ const client = new RainHelloWorld({
 });
 
 // Override per-request:
-await client.applications.company.create({ address: { city: 'city', country: 'country', countryCode: 'xx', line1: 'line1', postalCode: 'postalCode', region: 'region' }, entity: { name: 'name', registrationNumber: 'registrationNumber', taxId: 'taxId', website: 'website' }, initialUser: { address: { city: 'city', country: 'country', countryCode: 'xx', line1: 'line1', postalCode: 'postalCode', region: 'region' }, birthDate: '2000-01-01', countryOfIssue: 'xx', email: 'email', firstName: 'firstName', lastName: 'lastName', nationalId: 'nationalId', ipAddress: 'ipAddress', isTermsOfServiceAccepted: true }, name: 'REPLACE_ME', representatives: [{ address: { city: 'city', country: 'country', countryCode: 'xx', line1: 'line1', postalCode: 'postalCode', region: 'region' }, birthDate: '2000-01-01', countryOfIssue: 'xx', email: 'email', firstName: 'firstName', lastName: 'lastName', nationalId: 'nationalId' }], ultimateBeneficialOwners: [{ address: { city: 'city', country: 'country', countryCode: 'xx', line1: 'line1', postalCode: 'postalCode', region: 'region' }, birthDate: '2000-01-01', countryOfIssue: 'xx', email: 'email', firstName: 'firstName', lastName: 'lastName', nationalId: 'nationalId' }] }, {
+await client.applications.company.create({
+  address: {
+  city: 'city',
+  country: 'country',
+  countryCode: 'xx',
+  line1: 'line1',
+  postalCode: 'postalCode',
+  region: 'region',
+},
+  entity: {
+  name: 'name',
+  registrationNumber: 'registrationNumber',
+  taxId: 'taxId',
+  website: 'website',
+},
+  initialUser: {
+  address: {
+  city: 'city',
+  country: 'country',
+  countryCode: 'xx',
+  line1: 'line1',
+  postalCode: 'postalCode',
+  region: 'region',
+},
+  birthDate: '2000-01-01',
+  countryOfIssue: 'xx',
+  email: 'email',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  nationalId: 'nationalId',
+  ipAddress: 'ipAddress',
+  isTermsOfServiceAccepted: true,
+},
+  name: 'REPLACE_ME',
+  representatives: [{
+  address: {
+  city: 'city',
+  country: 'country',
+  countryCode: 'xx',
+  line1: 'line1',
+  postalCode: 'postalCode',
+  region: 'region',
+},
+  birthDate: '2000-01-01',
+  countryOfIssue: 'xx',
+  email: 'email',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  nationalId: 'nationalId',
+}],
+  ultimateBeneficialOwners: [{
+  address: {
+  city: 'city',
+  country: 'country',
+  countryCode: 'xx',
+  line1: 'line1',
+  postalCode: 'postalCode',
+  region: 'region',
+},
+  birthDate: '2000-01-01',
+  countryOfIssue: 'xx',
+  email: 'email',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  nationalId: 'nationalId',
+}],
+}, {
   timeout: 5 * 1000,
 });
 ```
@@ -385,7 +531,12 @@ const response = await client.applications.company
       postalCode: 'postalCode',
       region: 'region',
     },
-    entity: { name: 'name', registrationNumber: 'registrationNumber', taxId: 'taxId', website: 'website' },
+    entity: {
+      name: 'name',
+      registrationNumber: 'registrationNumber',
+      taxId: 'taxId',
+      website: 'website',
+    },
     initialUser: {
       address: {
         city: 'city',
@@ -456,7 +607,12 @@ const { data: issuingCompany, response: raw } = await client.applications.compan
       postalCode: 'postalCode',
       region: 'region',
     },
-    entity: { name: 'name', registrationNumber: 'registrationNumber', taxId: 'taxId', website: 'website' },
+    entity: {
+      name: 'name',
+      registrationNumber: 'registrationNumber',
+      taxId: 'taxId',
+      website: 'website',
+    },
     initialUser: {
       address: {
         city: 'city',
