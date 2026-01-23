@@ -1,4 +1,4 @@
 configured_endpoints: 60
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/signify-holdings%2Frain-hello-world-e7e6151b22f4e18322ed7c1a92a8fb69357fc286ade6c0c5e058cd591b1ffa08.yml
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/signify-holdings%2Frain-hello-world-64bf86b39d4ea9d3fc313d76701361874229c9220f1dcdbebf52563a6649aa22.yml
 openapi_spec_hash: dc073e4aab6c6c32f53a9022e532b00f
-config_hash: 50eb997d965a956e7883095ec73f271a
+config_hash: 7982938b61ac14e158787e4c03b1caad

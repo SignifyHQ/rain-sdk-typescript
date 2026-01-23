@@ -117,9 +117,6 @@ export interface IssuingCardLimit {
    */
   amount: number;
 
-  /**
-   * The frequency at which the spending limit resets
-   */
   frequency:
     | 'per24HourPeriod'
     | 'per7DayPeriod'
