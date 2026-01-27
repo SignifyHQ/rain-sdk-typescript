@@ -341,7 +341,7 @@ describe('instantiate client', () => {
       process.env['RAIN_HELLO_WORLD_BASE_URL'] = 'https://example.com/from_env';
 
       expect(
-        () => new RainHelloWorld({ apiKey: 'My API Key', environment: 'production' }),
+        () => new RainHelloWorld({ apiKey: 'My API Key', environment: 'dev' }),
       ).toThrowErrorMatchingInlineSnapshot(
         `"Ambiguous URL; The \`baseURL\` option (or RAIN_HELLO_WORLD_BASE_URL env var) and the \`environment\` option are given. If you want to use the environment you must pass baseURL: null"`,
       );
@@ -349,7 +349,7 @@ describe('instantiate client', () => {
       const client = new RainHelloWorld({
         apiKey: 'My API Key',
         baseURL: null,
-        environment: 'production',
+        environment: 'dev',
       });
       expect(client.baseURL).toEqual('https://api-dev.raincards.xyz/v1/issuing');
     });
