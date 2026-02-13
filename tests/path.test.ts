@@ -1,4 +1,4 @@
-import { createPathTagFunction, encodeURIPath } from 'rain-hello-world/internal/utils/path';
+import { createPathTagFunction, encodeURIPath } from 'rain-sdk/internal/utils/path';
 import { inspect } from 'node:util';
 import { runInNewContext } from 'node:vm';
 

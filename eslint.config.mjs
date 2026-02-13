@@ -25,7 +25,7 @@ export default tseslint.config(
         {
           patterns: [
             {
-              regex: '^rain-hello-world(/.*)?',
+              regex: '^rain-sdk(/.*)?',
               message: 'Use a relative import, not a package import.',
             },
           ],

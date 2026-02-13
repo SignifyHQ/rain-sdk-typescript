@@ -42,25 +42,25 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```sh
-$ npm install git+ssh://git@github.com:michaelcc-rain/rain-sdk-typescript.git
+$ npm install git+ssh://git@github.com:SignifyHQ/rain-sdk-typescript.git
 ```
 
 Alternatively, to link a local copy of the repo:
 
 ```sh
 # Clone
-$ git clone https://www.github.com/michaelcc-rain/rain-sdk-typescript
+$ git clone https://www.github.com/SignifyHQ/rain-sdk-typescript
 $ cd rain-sdk-typescript
 
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link rain-hello-world
+$ yarn link rain-sdk
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global rain-hello-world
+$ pnpm link -—global rain-sdk
 ```
 
 ## Running tests
@@ -99,7 +99,7 @@ the changes aren't made through the automated pipeline, you may want to make rel
 
 ### Publish with a GitHub workflow
 
-You can release to package managers by using [the `Publish NPM` GitHub action](https://www.github.com/michaelcc-rain/rain-sdk-typescript/actions/workflows/publish-npm.yml). This requires a setup organization or repository secret to be set up.
+You can release to package managers by using [the `Publish NPM` GitHub action](https://www.github.com/SignifyHQ/rain-sdk-typescript/actions/workflows/publish-npm.yml). This requires a setup organization or repository secret to be set up.
 
 ### Publish manually
 
