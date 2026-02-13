@@ -7,8 +7,8 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^rain-hello-world$': '<rootDir>/src/index.ts',
-    '^rain-hello-world/(.*)$': '<rootDir>/src/$1',
+    '^rain-sdk$': '<rootDir>/src/index.ts',
+    '^rain-sdk/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { RainHelloWorld as default } from './client';
+export { Rain as default } from './client';
 
 export { type Uploadable, toFile } from './core/uploads';
 export { APIPromise } from './core/api-promise';
-export { RainHelloWorld, type ClientOptions } from './client';
+export { Rain, type ClientOptions } from './client';
 export {
-  RainHelloWorldError,
+  RainError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,

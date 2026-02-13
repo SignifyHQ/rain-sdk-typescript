@@ -1,5 +1,5 @@
-import { multipartFormRequestOptions, createForm } from 'rain-hello-world/internal/uploads';
-import { toFile } from 'rain-hello-world/core/uploads';
+import { multipartFormRequestOptions, createForm } from 'rain-sdk/internal/uploads';
+import { toFile } from 'rain-sdk/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

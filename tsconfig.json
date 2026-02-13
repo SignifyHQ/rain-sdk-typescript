@@ -8,8 +8,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "paths": {
-      "rain-hello-world/*": ["./src/*"],
-      "rain-hello-world": ["./src/index.ts"]
+      "rain-sdk/*": ["./src/*"],
+      "rain-sdk": ["./src/index.ts"]
     },
     "noEmit": true,
 

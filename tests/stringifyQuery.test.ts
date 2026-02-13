@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { RainHelloWorld } from 'rain-hello-world';
+import { Rain } from 'rain-sdk';
 
-const { stringifyQuery } = RainHelloWorld.prototype as any;
+const { stringifyQuery } = Rain.prototype as any;
 
 describe(stringifyQuery, () => {
   for (const [input, expected] of [
