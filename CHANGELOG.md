@@ -22,6 +22,7 @@ Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/SignifyHQ/r
 * **client:** get fetchOptions type more reliably ([251d540](https://github.com/SignifyHQ/rain-sdk-typescript/commit/251d5404031a12321ccc5b4e9174ed60c3713846))
 * **mcp:** correct code tool API endpoint ([79b835f](https://github.com/SignifyHQ/rain-sdk-typescript/commit/79b835fab6ea3c8992dc8e87a403bfe63cfe53e6))
 * **mcp:** return correct lines on typescript errors ([e848129](https://github.com/SignifyHQ/rain-sdk-typescript/commit/e8481290652fe2b3fc5a7504c33a80569ac694f6))
+* **naming:** change sdk package names ([30b23ae](https://github.com/SignifyHQ/rain-sdk-typescript/commit/30b23ae613b504655805aa17dfa8a804de6e354c))
 
 
 ### Chores

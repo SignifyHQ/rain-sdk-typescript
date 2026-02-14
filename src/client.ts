@@ -102,7 +102,7 @@ type Environment = keyof typeof environments;
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['RAIN_HELLO_WORLD_API_KEY'].
+   * Defaults to process.env['RAIN_API_KEY'].
    */
   apiKey?: string | undefined;
 
@@ -118,7 +118,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['RAIN_HELLO_WORLD_BASE_URL'].
+   * Defaults to process.env['RAIN_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -172,7 +172,7 @@ export interface ClientOptions {
   /**
    * Set the log level.
    *
-   * Defaults to process.env['RAIN_HELLO_WORLD_LOG'] or 'warn' if it isn't set.
+   * Defaults to process.env['RAIN_LOG'] or 'warn' if it isn't set.
    */
   logLevel?: LogLevel | undefined;
 
@@ -185,9 +185,9 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Rain Hello World API.
+ * API Client for interfacing with the Rain API.
  */
-export class RainHelloWorld {
+export class Rain {
   apiKey: string;
 
   baseURL: string;
@@ -203,11 +203,11 @@ export class RainHelloWorld {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Rain Hello World API.
+   * API Client for interfacing with the Rain API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['RAIN_HELLO_WORLD_API_KEY'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['RAIN_API_KEY'] ?? undefined]
    * @param {Environment} [opts.environment=dev] - Specifies the environment URL to use for the API.
-   * @param {string} [opts.baseURL=process.env['RAIN_HELLO_WORLD_BASE_URL'] ?? https://api-dev.raincards.xyz/v1/issuing] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['RAIN_BASE_URL'] ?? https://api-dev.raincards.xyz/v1/issuing] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -216,13 +216,13 @@ export class RainHelloWorld {
    * @param {Record<string, string | undefined>} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = readEnv('RAIN_HELLO_WORLD_BASE_URL'),
-    apiKey = readEnv('RAIN_HELLO_WORLD_API_KEY'),
+    baseURL = readEnv('RAIN_BASE_URL'),
+    apiKey = readEnv('RAIN_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Errors.RainHelloWorldError(
-        "The RAIN_HELLO_WORLD_API_KEY environment variable is missing or empty; either provide it, or instantiate the RainHelloWorld client with an apiKey option, like new RainHelloWorld({ apiKey: 'My API Key' }).",
+      throw new Errors.RainError(
+        "The RAIN_API_KEY environment variable is missing or empty; either provide it, or instantiate the Rain client with an apiKey option, like new Rain({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -234,20 +234,20 @@ export class RainHelloWorld {
     };
 
     if (baseURL && opts.environment) {
-      throw new Errors.RainHelloWorldError(
-        'Ambiguous URL; The `baseURL` option (or RAIN_HELLO_WORLD_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
+      throw new Errors.RainError(
+        'Ambiguous URL; The `baseURL` option (or RAIN_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
       );
     }
 
     this.baseURL = options.baseURL || environments[options.environment || 'dev'];
-    this.timeout = options.timeout ?? RainHelloWorld.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? Rain.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
     this.logLevel = defaultLogLevel;
     this.logLevel =
       parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv('RAIN_HELLO_WORLD_LOG'), "process.env['RAIN_HELLO_WORLD_LOG']", this) ??
+      parseLogLevel(readEnv('RAIN_LOG'), "process.env['RAIN_LOG']", this) ??
       defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
@@ -774,10 +774,10 @@ export class RainHelloWorld {
     }
   }
 
-  static RainHelloWorld = this;
+  static Rain = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static RainHelloWorldError = Errors.RainHelloWorldError;
+  static RainError = Errors.RainError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -806,19 +806,19 @@ export class RainHelloWorld {
   users: API.Users = new API.Users(this);
 }
 
-RainHelloWorld.Applications = Applications;
-RainHelloWorld.Balances = Balances;
-RainHelloWorld.Cards = Cards;
-RainHelloWorld.Companies = Companies;
-RainHelloWorld.Contracts = Contracts;
-RainHelloWorld.Disputes = Disputes;
-RainHelloWorld.Keys = Keys;
-RainHelloWorld.Payments = Payments;
-RainHelloWorld.Signatures = Signatures;
-RainHelloWorld.Transactions = Transactions;
-RainHelloWorld.Users = Users;
+Rain.Applications = Applications;
+Rain.Balances = Balances;
+Rain.Cards = Cards;
+Rain.Companies = Companies;
+Rain.Contracts = Contracts;
+Rain.Disputes = Disputes;
+Rain.Keys = Keys;
+Rain.Payments = Payments;
+Rain.Signatures = Signatures;
+Rain.Transactions = Transactions;
+Rain.Users = Users;
 
-export declare namespace RainHelloWorld {
+export declare namespace Rain {
   export type RequestOptions = Opts.RequestOptions;
 
   export { Applications as Applications };

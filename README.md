@@ -1,8 +1,8 @@
-# Rain Hello World TypeScript API Library
+# Rain TypeScript API Library
 
-[![NPM version](<https://img.shields.io/npm/v/rain-hello-world.svg?label=npm%20(stable)>)](https://npmjs.org/package/rain-hello-world) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/rain-hello-world)
+[![NPM version](<https://img.shields.io/npm/v/rain-sdk.svg?label=npm%20(stable)>)](https://npmjs.org/package/rain-sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/rain-sdk)
 
-This library provides convenient access to the Rain Hello World REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Rain REST API from server-side TypeScript or JavaScript.
 
 The full API of this library can be found in [api.md](api.md).
 
@@ -11,7 +11,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 ## Installation
 
 ```sh
-npm install rain-hello-world
+npm install rain-sdk
 ```
 
 ## Usage
@@ -20,10 +20,10 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import RainHelloWorld from 'rain-hello-world';
+import Rain from 'rain-sdk';
 
-const client = new RainHelloWorld({
-  apiKey: process.env['RAIN_HELLO_WORLD_API_KEY'], // This is the default and can be omitted
+const client = new Rain({
+  apiKey: process.env['RAIN_API_KEY'], // This is the default and can be omitted
   environment: 'production', // defaults to 'dev'
 });
 
@@ -41,19 +41,18 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import RainHelloWorld from 'rain-hello-world';
+import Rain from 'rain-sdk';
 
-const client = new RainHelloWorld({
-  apiKey: process.env['RAIN_HELLO_WORLD_API_KEY'], // This is the default and can be omitted
+const client = new Rain({
+  apiKey: process.env['RAIN_API_KEY'], // This is the default and can be omitted
   environment: 'production', // defaults to 'dev'
 });
 
-const params: RainHelloWorld.CompanyChargeParams = {
-  amount: 123,
-  description: 'Custom fee charge',
-};
-const issuingChargeCreateResponse: RainHelloWorld.IssuingChargeCreateResponse =
-  await client.companies.charge('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', params);
+const params: Rain.CompanyChargeParams = { amount: 123, description: 'Custom fee charge' };
+const issuingChargeCreateResponse: Rain.IssuingChargeCreateResponse = await client.companies.charge(
+  '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+  params,
+);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -69,9 +68,9 @@ Request parameters that correspond to file uploads can be passed in many differe
 
 ```ts
 import fs from 'fs';
-import RainHelloWorld, { toFile } from 'rain-hello-world';
+import Rain, { toFile } from 'rain-sdk';
 
-const client = new RainHelloWorld();
+const client = new Rain();
 
 // If you have access to Node `fs` we recommend using `fs.createReadStream()`:
 await client.applications.company.uploadDocument('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
@@ -108,7 +107,7 @@ a subclass of `APIError` will be thrown:
 const issuingChargeCreateResponse = await client.companies
   .charge('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { amount: 123, description: 'Custom fee charge' })
   .catch(async (err) => {
-    if (err instanceof RainHelloWorld.APIError) {
+    if (err instanceof Rain.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
       console.log(err.headers); // {server: 'nginx', ...}
@@ -142,7 +141,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const client = new RainHelloWorld({
+const client = new Rain({
   maxRetries: 0, // default is 2
 });
 
@@ -159,7 +158,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const client = new RainHelloWorld({
+const client = new Rain({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
@@ -185,7 +184,7 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 
 <!-- prettier-ignore -->
 ```ts
-const client = new RainHelloWorld();
+const client = new Rain();
 
 const response = await client.companies
   .charge('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { amount: 123, description: 'Custom fee charge' })
@@ -210,13 +209,13 @@ console.log(issuingChargeCreateResponse.id);
 
 The log level can be configured in two ways:
 
-1. Via the `RAIN_HELLO_WORLD_LOG` environment variable
+1. Via the `RAIN_LOG` environment variable
 2. Using the `logLevel` client option (overrides the environment variable if set)
 
 ```ts
-import RainHelloWorld from 'rain-hello-world';
+import Rain from 'rain-sdk';
 
-const client = new RainHelloWorld({
+const client = new Rain({
   logLevel: 'debug', // Show all log messages
 });
 ```
@@ -242,13 +241,13 @@ When providing a custom logger, the `logLevel` option still controls which messa
 below the configured level will not be sent to your logger.
 
 ```ts
-import RainHelloWorld from 'rain-hello-world';
+import Rain from 'rain-sdk';
 import pino from 'pino';
 
 const logger = pino();
 
-const client = new RainHelloWorld({
-  logger: logger.child({ name: 'RainHelloWorld' }),
+const client = new Rain({
+  logger: logger.child({ name: 'Rain' }),
   logLevel: 'debug', // Send all messages to pino, allowing it to filter
 });
 ```
@@ -311,10 +310,10 @@ globalThis.fetch = fetch;
 Or pass it to the client:
 
 ```ts
-import RainHelloWorld from 'rain-hello-world';
+import Rain from 'rain-sdk';
 import fetch from 'my-fetch';
 
-const client = new RainHelloWorld({ fetch });
+const client = new Rain({ fetch });
 ```
 
 ### Fetch options
@@ -322,9 +321,9 @@ const client = new RainHelloWorld({ fetch });
 If you want to set custom `fetch` options without overriding the `fetch` function, you can provide a `fetchOptions` object when instantiating the client or making a request. (Request-specific options override client options.)
 
 ```ts
-import RainHelloWorld from 'rain-hello-world';
+import Rain from 'rain-sdk';
 
-const client = new RainHelloWorld({
+const client = new Rain({
   fetchOptions: {
     // `RequestInit` options
   },
@@ -339,11 +338,11 @@ options to requests:
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/node.svg" align="top" width="18" height="21"> **Node** <sup>[[docs](https://github.com/nodejs/undici/blob/main/docs/docs/api/ProxyAgent.md#example---proxyagent-with-fetch)]</sup>
 
 ```ts
-import RainHelloWorld from 'rain-hello-world';
+import Rain from 'rain-sdk';
 import * as undici from 'undici';
 
 const proxyAgent = new undici.ProxyAgent('http://localhost:8888');
-const client = new RainHelloWorld({
+const client = new Rain({
   fetchOptions: {
     dispatcher: proxyAgent,
   },
@@ -353,9 +352,9 @@ const client = new RainHelloWorld({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/bun.svg" align="top" width="18" height="21"> **Bun** <sup>[[docs](https://bun.sh/guides/http/proxy)]</sup>
 
 ```ts
-import RainHelloWorld from 'rain-hello-world';
+import Rain from 'rain-sdk';
 
-const client = new RainHelloWorld({
+const client = new Rain({
   fetchOptions: {
     proxy: 'http://localhost:8888',
   },
@@ -365,10 +364,10 @@ const client = new RainHelloWorld({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/deno.svg" align="top" width="18" height="21"> **Deno** <sup>[[docs](https://docs.deno.com/api/deno/~/Deno.createHttpClient)]</sup>
 
 ```ts
-import RainHelloWorld from 'npm:rain-hello-world';
+import Rain from 'npm:rain-sdk';
 
 const httpClient = Deno.createHttpClient({ proxy: { url: 'http://localhost:8888' } });
-const client = new RainHelloWorld({
+const client = new Rain({
   fetchOptions: {
     client: httpClient,
   },
@@ -387,7 +386,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/michaelcc-rain/rain-sdk-typescript/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/SignifyHQ/rain-sdk-typescript/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
