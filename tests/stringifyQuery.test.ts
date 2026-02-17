@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Rain } from 'rainapi-sdk';
+import { Rain } from '@rainapi/rain-sdk';
 
 const { stringifyQuery } = Rain.prototype as any;
 

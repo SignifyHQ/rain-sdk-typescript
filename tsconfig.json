@@ -8,8 +8,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "paths": {
-      "rainapi-sdk/*": ["./src/*"],
-      "rainapi-sdk": ["./src/index.ts"]
+      "@rainapi/rain-sdk/*": ["./src/*"],
+      "@rainapi/rain-sdk": ["./src/index.ts"]
     },
     "noEmit": true,
 
