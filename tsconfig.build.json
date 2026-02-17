@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "rain-sdk/*": ["./dist/src/*"],
-      "rain-sdk": ["./dist/src/index.ts"]
+      "rainapi-sdk/*": ["./dist/src/*"],
+      "rainapi-sdk": ["./dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,

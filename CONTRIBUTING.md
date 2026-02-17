@@ -55,12 +55,12 @@ $ cd rain-sdk-typescript
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link rain-sdk
+$ yarn link rainapi-sdk
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global rain-sdk
+$ pnpm link -—global rainapi-sdk
 ```
 
 ## Running tests
