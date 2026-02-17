@@ -25,7 +25,7 @@ export default tseslint.config(
         {
           patterns: [
             {
-              regex: '^rain-sdk(/.*)?',
+              regex: '^rainapi-sdk(/.*)?',
               message: 'Use a relative import, not a package import.',
             },
           ],

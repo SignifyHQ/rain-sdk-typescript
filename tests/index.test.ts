@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from 'rain-sdk/core/api-promise';
+import { APIPromise } from 'rainapi-sdk/core/api-promise';
 
 import util from 'node:util';
-import Rain from 'rain-sdk';
-import { APIUserAbortError } from 'rain-sdk';
+import Rain from 'rainapi-sdk';
+import { APIUserAbortError } from 'rainapi-sdk';
 const defaultFetch = fetch;
 
 describe('instantiate client', () => {
