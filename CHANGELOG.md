@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2026-02-17)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Chores
+
+* **internal/client:** fix form-urlencoded requests ([3a3cd89](https://github.com/SignifyHQ/rain-sdk-typescript/commit/3a3cd8969dd618983b96458f8e0fc4cd9f36fb9b))
+
 ## 0.1.0-alpha.2 (2026-02-17)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
