@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2026-02-17)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** change package name ([955545e](https://github.com/SignifyHQ/rain-sdk-typescript/commit/955545eff9f63e0bd67768ac18e77daa61168e68))
+
+
+### Bug Fixes
+
+* **publishing:** update npmjs package name ([25779d8](https://github.com/SignifyHQ/rain-sdk-typescript/commit/25779d8f1852654ea407180551b5b99788747324))
+
 ## 0.1.0-alpha.1 (2026-02-13)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
