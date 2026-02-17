@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Rain, { toFile } from 'rainapi-sdk';
+import Rain, { toFile } from '@rainapi/rain-sdk';
 
 const client = new Rain({
   apiKey: 'My API Key',
