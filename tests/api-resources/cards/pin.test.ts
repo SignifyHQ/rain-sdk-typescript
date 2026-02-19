@@ -8,7 +8,7 @@ const client = new Rain({
 });
 
 describe('resource pin', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.cards.pin.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       SessionId: 'x',
@@ -22,14 +22,14 @@ describe('resource pin', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.cards.pin.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       SessionId: 'x',
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.cards.pin.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       encryptedPin: { data: 'data', iv: 'iv' },
@@ -44,7 +44,7 @@ describe('resource pin', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.cards.pin.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       encryptedPin: { data: 'data', iv: 'iv' },

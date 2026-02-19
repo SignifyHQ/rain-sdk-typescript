@@ -8,7 +8,7 @@ const client = new Rain({
 });
 
 describe('resource receipt', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('upload: only required params', async () => {
     const responsePromise = client.transactions.receipt.upload('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       receipt: await toFile(Buffer.from('# my file contents'), 'README.md'),
@@ -22,7 +22,7 @@ describe('resource receipt', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('upload: required and optional params', async () => {
     const response = await client.transactions.receipt.upload('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       receipt: await toFile(Buffer.from('# my file contents'), 'README.md'),

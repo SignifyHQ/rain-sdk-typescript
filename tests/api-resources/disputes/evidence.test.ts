@@ -8,7 +8,7 @@ const client = new Rain({
 });
 
 describe('resource evidence', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('upload: only required params', async () => {
     const responsePromise = client.disputes.evidence.upload('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       evidence: await toFile(Buffer.from('# my file contents'), 'README.md'),
@@ -24,7 +24,7 @@ describe('resource evidence', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('upload: required and optional params', async () => {
     const response = await client.disputes.evidence.upload('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       evidence: await toFile(Buffer.from('# my file contents'), 'README.md'),

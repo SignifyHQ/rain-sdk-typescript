@@ -8,7 +8,7 @@ const client = new Rain({
 });
 
 describe('resource balances', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.balances.retrieve();
     const rawResponse = await responsePromise.asResponse();

@@ -8,7 +8,7 @@ const client = new Rain({
 });
 
 describe('resource company', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.applications.company.create({
       address: {
@@ -90,7 +90,7 @@ describe('resource company', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.applications.company.create({
       address: {
@@ -187,7 +187,7 @@ describe('resource company', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.applications.company.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
@@ -199,7 +199,7 @@ describe('resource company', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.applications.company.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
@@ -211,7 +211,7 @@ describe('resource company', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -242,7 +242,7 @@ describe('resource company', () => {
     ).rejects.toThrow(Rain.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('reapply: only required params', async () => {
     const responsePromise = client.applications.company.reapply('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       address: {
@@ -316,7 +316,7 @@ describe('resource company', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('reapply: required and optional params', async () => {
     const response = await client.applications.company.reapply('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       address: {
@@ -399,7 +399,7 @@ describe('resource company', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('uploadDocument: only required params', async () => {
     const responsePromise = client.applications.company.uploadDocument(
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
@@ -414,7 +414,7 @@ describe('resource company', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('uploadDocument: required and optional params', async () => {
     const response = await client.applications.company.uploadDocument(
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
