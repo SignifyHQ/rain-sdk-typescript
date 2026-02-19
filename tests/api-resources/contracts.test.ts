@@ -8,7 +8,7 @@ const client = new Rain({
 });
 
 describe('resource contracts', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.contracts.list();
     const rawResponse = await responsePromise.asResponse();
