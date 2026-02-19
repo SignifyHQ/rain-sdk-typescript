@@ -8,7 +8,7 @@ const client = new Rain({
 });
 
 describe('resource companies', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.companies.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource companies', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.companies.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
@@ -32,7 +32,7 @@ describe('resource companies', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -55,7 +55,7 @@ describe('resource companies', () => {
     ).rejects.toThrow(Rain.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.companies.list();
     const rawResponse = await responsePromise.asResponse();
@@ -67,7 +67,7 @@ describe('resource companies', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -75,7 +75,7 @@ describe('resource companies', () => {
     ).rejects.toThrow(Rain.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('charge: only required params', async () => {
     const responsePromise = client.companies.charge('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       amount: 1,
@@ -90,7 +90,7 @@ describe('resource companies', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('charge: required and optional params', async () => {
     const response = await client.companies.charge('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       amount: 1,
@@ -98,7 +98,7 @@ describe('resource companies', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('createUser: only required params', async () => {
     const responsePromise = client.companies.createUser('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       email: 'email',
@@ -115,7 +115,7 @@ describe('resource companies', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('createUser: required and optional params', async () => {
     const response = await client.companies.createUser('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       email: 'email',
@@ -138,7 +138,7 @@ describe('resource companies', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('initiatePayment: only required params', async () => {
     const responsePromise = client.companies.initiatePayment('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       amount: 0,
@@ -153,7 +153,7 @@ describe('resource companies', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('initiatePayment: required and optional params', async () => {
     const response = await client.companies.initiatePayment('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       amount: 0,
@@ -162,7 +162,7 @@ describe('resource companies', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveBalances', async () => {
     const responsePromise = client.companies.retrieveBalances('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
@@ -174,7 +174,7 @@ describe('resource companies', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveContracts', async () => {
     const responsePromise = client.companies.retrieveContracts('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
