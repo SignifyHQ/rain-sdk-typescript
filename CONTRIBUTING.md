@@ -60,7 +60,7 @@ $ yarn link @rainapi/rain-sdk
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global @rainapi/rain-sdk
+$ pnpm link --global @rainapi/rain-sdk
 ```
 
 ## Running tests
