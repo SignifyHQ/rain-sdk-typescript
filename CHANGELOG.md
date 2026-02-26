@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2026-02-26)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Bug Fixes
+
+* **docs/contributing:** correct pnpm link command ([568931c](https://github.com/SignifyHQ/rain-sdk-typescript/commit/568931c50e5fb67b547afa469fd01e2309cf2b6d))
+
+
+### Chores
+
+* **internal:** move stringifyQuery implementation to internal function ([3d4b612](https://github.com/SignifyHQ/rain-sdk-typescript/commit/3d4b612e9912de4c289352cc8af09f67ffb4167d))
+* **internal:** remove mock server code ([d857135](https://github.com/SignifyHQ/rain-sdk-typescript/commit/d85713519d6a46ce4c034d6dd934cef0b0cad5da))
+* update mock server docs ([45f59c1](https://github.com/SignifyHQ/rain-sdk-typescript/commit/45f59c100b5548a0e08c1f451ad891861a673620))
+
 ## 0.1.0-alpha.3 (2026-02-17)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
