@@ -8,7 +8,7 @@ const client = new Rain({
 });
 
 describe('resource users', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.users.create({
       email: 'email',
@@ -24,7 +24,7 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.users.create({
       email: 'email',
@@ -45,7 +45,7 @@ describe('resource users', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.users.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
@@ -57,7 +57,7 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.users.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
@@ -69,7 +69,7 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -98,7 +98,7 @@ describe('resource users', () => {
     ).rejects.toThrow(Rain.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.users.list();
     const rawResponse = await responsePromise.asResponse();
@@ -110,7 +110,7 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -125,7 +125,7 @@ describe('resource users', () => {
     ).rejects.toThrow(Rain.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.users.delete('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
@@ -137,7 +137,7 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('createCard: only required params', async () => {
     const responsePromise = client.users.createCard('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       type: 'physical',
@@ -151,7 +151,7 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('createCard: required and optional params', async () => {
     const response = await client.users.createCard('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       type: 'physical',
@@ -186,7 +186,7 @@ describe('resource users', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('createCharge: only required params', async () => {
     const responsePromise = client.users.createCharge('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       amount: 1,
@@ -201,7 +201,7 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('createCharge: required and optional params', async () => {
     const response = await client.users.createCharge('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       amount: 1,
@@ -209,7 +209,7 @@ describe('resource users', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('initiatePayment: only required params', async () => {
     const responsePromise = client.users.initiatePayment('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       amount: 0,
@@ -224,7 +224,7 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('initiatePayment: required and optional params', async () => {
     const response = await client.users.initiatePayment('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       amount: 0,
@@ -233,7 +233,7 @@ describe('resource users', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveBalances', async () => {
     const responsePromise = client.users.retrieveBalances('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
@@ -245,7 +245,7 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveContracts', async () => {
     const responsePromise = client.users.retrieveContracts('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
