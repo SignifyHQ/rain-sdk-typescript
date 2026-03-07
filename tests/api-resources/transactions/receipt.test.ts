@@ -11,7 +11,7 @@ describe('resource receipt', () => {
   // Mock server tests are disabled
   test.skip('upload: only required params', async () => {
     const responsePromise = client.transactions.receipt.upload('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-      receipt: await toFile(Buffer.from('# my file contents'), 'README.md'),
+      receipt: await toFile(Buffer.from('Example data'), 'README.md'),
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,7 +25,7 @@ describe('resource receipt', () => {
   // Mock server tests are disabled
   test.skip('upload: required and optional params', async () => {
     const response = await client.transactions.receipt.upload('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-      receipt: await toFile(Buffer.from('# my file contents'), 'README.md'),
+      receipt: await toFile(Buffer.from('Example data'), 'README.md'),
     });
   });
 });
