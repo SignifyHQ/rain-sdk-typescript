@@ -14,7 +14,7 @@ describe('resource document', () => {
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       {
         companyId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-        document: await toFile(Buffer.from('# my file contents'), 'README.md'),
+        document: await toFile(Buffer.from('Example data'), 'README.md'),
       },
     );
     const rawResponse = await responsePromise.asResponse();
@@ -32,7 +32,7 @@ describe('resource document', () => {
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       {
         companyId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-        document: await toFile(Buffer.from('# my file contents'), 'README.md'),
+        document: await toFile(Buffer.from('Example data'), 'README.md'),
         country: 'xxx',
         side: 'front',
         type: 'idCard',

@@ -48,7 +48,7 @@ describe('resource ubo', () => {
   test.skip('uploadDocument: only required params', async () => {
     const responsePromise = client.applications.company.ubo.uploadDocument(
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-      { document: await toFile(Buffer.from('# my file contents'), 'README.md'), email: 'email' },
+      { document: await toFile(Buffer.from('Example data'), 'README.md'), email: 'email' },
     );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -64,7 +64,7 @@ describe('resource ubo', () => {
     const response = await client.applications.company.ubo.uploadDocument(
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       {
-        document: await toFile(Buffer.from('# my file contents'), 'README.md'),
+        document: await toFile(Buffer.from('Example data'), 'README.md'),
         email: 'email',
         country: 'xxx',
         side: 'front',
