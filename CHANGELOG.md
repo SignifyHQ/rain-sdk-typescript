@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2026-03-09)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Bug Fixes
+
+* **client:** preserve URL params already embedded in path ([2a0a28d](https://github.com/SignifyHQ/rain-sdk-typescript/commit/2a0a28db975d1a1bf8974648b5bf324c86aa23bf))
+* fix request delays for retrying to be more respectful of high requested delays ([28fef9a](https://github.com/SignifyHQ/rain-sdk-typescript/commit/28fef9af2e6f4e28d32d97b9327fe93653588b5b))
+
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([e94901f](https://github.com/SignifyHQ/rain-sdk-typescript/commit/e94901f05a1c329a2b6d5d6cc04995b816608c2a))
+* **internal:** update dependencies to address dependabot vulnerabilities ([6cc3ac1](https://github.com/SignifyHQ/rain-sdk-typescript/commit/6cc3ac157d35f9b198dfc6ad9d3b35612f57f3f5))
+* update placeholder string ([042e741](https://github.com/SignifyHQ/rain-sdk-typescript/commit/042e741e02306118d18448f0f236aa715c1a4e2a))
+
 ## 0.1.0-alpha.4 (2026-02-26)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
