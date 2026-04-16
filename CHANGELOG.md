@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2026-04-16)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Chores
+
+* **internal:** codegen related update ([0c9c1b8](https://github.com/SignifyHQ/rain-sdk-typescript/commit/0c9c1b8a015757b9d54e09efc144ee8feb52ebe1))
+* **internal:** codegen related update ([9866c7b](https://github.com/SignifyHQ/rain-sdk-typescript/commit/9866c7bcda92369a719b0ba7a6d4ea5c8e2af35e))
+
 ## 0.1.0-alpha.6 (2026-03-27)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
