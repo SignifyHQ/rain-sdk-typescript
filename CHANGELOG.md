@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2026-04-22)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Chores
+
+* **internal:** more robust bootstrap script ([39f7097](https://github.com/SignifyHQ/rain-sdk-typescript/commit/39f7097b2532d38176f343415c532813fc81b1c6))
+
 ## 0.1.0-alpha.7 (2026-04-16)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
