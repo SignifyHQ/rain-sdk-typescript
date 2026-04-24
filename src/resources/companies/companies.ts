@@ -3,12 +3,7 @@
 import { APIResource } from '../../core/resource';
 import * as UserAPI from '../applications/user';
 import * as SignaturesAPI from './signatures';
-import {
-  IssuingSignature,
-  SignatureRetrievePaymentSignatureParams,
-  SignatureRetrieveWithdrawalSignatureParams,
-  Signatures,
-} from './signatures';
+import { IssuingSignature, SignatureRetrievePaymentSignatureParams, SignatureRetrieveWithdrawalSignatureParams, Signatures } from './signatures';
 import * as CompanyAPI from '../applications/company/company';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -27,32 +22,21 @@ export class Companies extends APIResource {
   /**
    * Update the details of an existing company such as its name and address
    */
-  update(
-    companyID: string,
-    body: CompanyUpdateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<CompanyAPI.IssuingCompany> {
+  update(companyID: string, body: CompanyUpdateParams | null | undefined = {}, options?: RequestOptions): APIPromise<CompanyAPI.IssuingCompany> {
     return this._client.patch(path`/companies/${companyID}`, { body, ...options });
   }
 
   /**
    * Retrieves a list of all companies registered in the system
    */
-  list(
-    query: CompanyListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<CompanyListResponse> {
+  list(query: CompanyListParams | null | undefined = {}, options?: RequestOptions): APIPromise<CompanyListResponse> {
     return this._client.get('/companies', { query, ...options });
   }
 
   /**
    * Initiate a custom fee charge for a company.
    */
-  charge(
-    companyID: string,
-    body: CompanyChargeParams,
-    options?: RequestOptions,
-  ): APIPromise<IssuingChargeCreateResponse> {
+  charge(companyID: string, body: CompanyChargeParams, options?: RequestOptions): APIPromise<IssuingChargeCreateResponse> {
     return this._client.post(path`/companies/${companyID}/charges`, { body, ...options });
   }
 
@@ -60,11 +44,7 @@ export class Companies extends APIResource {
    * Creates a new user within a specific company. The user must provide details such
    * as their name, birthdate, and contact information.
    */
-  createUser(
-    companyID: string,
-    body: CompanyCreateUserParams,
-    options?: RequestOptions,
-  ): APIPromise<UserAPI.IssuingUser> {
+  createUser(companyID: string, body: CompanyCreateUserParams, options?: RequestOptions): APIPromise<UserAPI.IssuingUser> {
     return this._client.post(path`/companies/${companyID}/users`, { body, ...options });
   }
 
@@ -72,11 +52,7 @@ export class Companies extends APIResource {
    * Initiate a payment for a specific company by providing the payment amount and
    * wallet address.
    */
-  initiatePayment(
-    companyID: string,
-    body: CompanyInitiatePaymentParams,
-    options?: RequestOptions,
-  ): APIPromise<CompanyInitiatePaymentResponse> {
+  initiatePayment(companyID: string, body: CompanyInitiatePaymentParams, options?: RequestOptions): APIPromise<CompanyInitiatePaymentResponse> {
     return this._client.post(path`/companies/${companyID}/payments`, { body, ...options });
   }
 
@@ -91,10 +67,7 @@ export class Companies extends APIResource {
   /**
    * Retrieve the smart contract details associated with a company
    */
-  retrieveContracts(
-    companyID: string,
-    options?: RequestOptions,
-  ): APIPromise<CompanyRetrieveContractsResponse> {
+  retrieveContracts(companyID: string, options?: RequestOptions): APIPromise<CompanyRetrieveContractsResponse> {
     return this._client.get(path`/companies/${companyID}/contracts`, options);
   }
 }
@@ -206,7 +179,7 @@ export namespace IssuingContract {
   }
 }
 
-export type CompanyListResponse = Array<CompanyAPI.IssuingCompany>;
+export type CompanyListResponse = Array<CompanyAPI.IssuingCompany>
 
 export interface CompanyInitiatePaymentResponse {
   /**
@@ -242,7 +215,7 @@ export interface CompanyRetrieveBalancesResponse {
   spendingPower: number;
 }
 
-export type CompanyRetrieveContractsResponse = Array<IssuingContract>;
+export type CompanyRetrieveContractsResponse = Array<IssuingContract>
 
 export interface CompanyUpdateParams {
   /**
@@ -359,13 +332,13 @@ export declare namespace Companies {
     type CompanyListParams as CompanyListParams,
     type CompanyChargeParams as CompanyChargeParams,
     type CompanyCreateUserParams as CompanyCreateUserParams,
-    type CompanyInitiatePaymentParams as CompanyInitiatePaymentParams,
+    type CompanyInitiatePaymentParams as CompanyInitiatePaymentParams
   };
 
   export {
     Signatures as Signatures,
     type IssuingSignature as IssuingSignature,
     type SignatureRetrievePaymentSignatureParams as SignatureRetrievePaymentSignatureParams,
-    type SignatureRetrieveWithdrawalSignatureParams as SignatureRetrieveWithdrawalSignatureParams,
+    type SignatureRetrieveWithdrawalSignatureParams as SignatureRetrieveWithdrawalSignatureParams
   };
 }

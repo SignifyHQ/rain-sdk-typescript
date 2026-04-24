@@ -10,28 +10,17 @@ export class Pin extends APIResource {
   /**
    * Retrieve the encrypted PIN for a specific card
    */
-  retrieve(
-    cardID: string,
-    params: PinRetrieveParams,
-    options?: RequestOptions,
-  ): APIPromise<PinRetrieveResponse> {
-    const { SessionId } = params;
-    return this._client.get(path`/cards/${cardID}/pin`, {
-      ...options,
-      headers: buildHeaders([{ SessionId: SessionId }, options?.headers]),
-    });
+  retrieve(cardID: string, params: PinRetrieveParams, options?: RequestOptions): APIPromise<PinRetrieveResponse> {
+    const { SessionId } = params
+    return this._client.get(path`/cards/${cardID}/pin`, { ...options, headers: buildHeaders([{SessionId: SessionId}, options?.headers]) });
   }
 
   /**
    * Updates the PIN of a specific card by setting the encrypted PIN
    */
   update(cardID: string, params: PinUpdateParams, options?: RequestOptions): APIPromise<void> {
-    const { SessionId, ...body } = params;
-    return this._client.put(path`/cards/${cardID}/pin`, {
-      body,
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*', SessionId: SessionId }, options?.headers]),
-    });
+    const { SessionId, ...body } = params
+    return this._client.put(path`/cards/${cardID}/pin`, { body, ...options, headers: buildHeaders([{Accept: '*/*', SessionId: SessionId}, options?.headers]) });
   }
 }
 
@@ -103,6 +92,6 @@ export declare namespace Pin {
   export {
     type PinRetrieveResponse as PinRetrieveResponse,
     type PinRetrieveParams as PinRetrieveParams,
-    type PinUpdateParams as PinUpdateParams,
+    type PinUpdateParams as PinUpdateParams
   };
 }

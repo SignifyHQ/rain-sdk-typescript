@@ -2,29 +2,9 @@
 
 import { APIResource } from '../../core/resource';
 import * as UserAPI from './user';
-import {
-  IssuingUser,
-  User,
-  UserCreateParams,
-  UserInitiateParams,
-  UserReapplyParams,
-  UserRetrieveResponse,
-  UserUpdateParams,
-  UserUploadDocumentParams,
-} from './user';
+import { IssuingUser, User, UserCreateParams, UserInitiateParams, UserReapplyParams, UserRetrieveResponse, UserUpdateParams, UserUploadDocumentParams } from './user';
 import * as CompanyAPI from './company/company';
-import {
-  Company,
-  CompanyCreateParams,
-  CompanyReapplyParams,
-  CompanyRetrieveResponse,
-  CompanyUpdateParams,
-  CompanyUploadDocumentParams,
-  IssuingApplication,
-  IssuingApplicationPerson,
-  IssuingCompany,
-  PhysicalAddress,
-} from './company/company';
+import { Company, CompanyCreateParams, CompanyReapplyParams, CompanyRetrieveResponse, CompanyUpdateParams, CompanyUploadDocumentParams, IssuingApplication, IssuingApplicationPerson, IssuingCompany, PhysicalAddress } from './company/company';
 
 export class Applications extends APIResource {
   company: CompanyAPI.Company = new CompanyAPI.Company(this._client);
@@ -45,7 +25,7 @@ export declare namespace Applications {
     type CompanyCreateParams as CompanyCreateParams,
     type CompanyUpdateParams as CompanyUpdateParams,
     type CompanyReapplyParams as CompanyReapplyParams,
-    type CompanyUploadDocumentParams as CompanyUploadDocumentParams,
+    type CompanyUploadDocumentParams as CompanyUploadDocumentParams
   };
 
   export {
@@ -56,6 +36,6 @@ export declare namespace Applications {
     type UserUpdateParams as UserUpdateParams,
     type UserInitiateParams as UserInitiateParams,
     type UserReapplyParams as UserReapplyParams,
-    type UserUploadDocumentParams as UserUploadDocumentParams,
+    type UserUploadDocumentParams as UserUploadDocumentParams
   };
 }

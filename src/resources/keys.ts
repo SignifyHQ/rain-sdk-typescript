@@ -20,10 +20,7 @@ export class Keys extends APIResource {
    * This endpoint allows for the deletion of a specific key using its unique ID.
    */
   delete(keyID: string, options?: RequestOptions): APIPromise<void> {
-    return this._client.delete(path`/keys/${keyID}`, {
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-    });
+    return this._client.delete(path`/keys/${keyID}`, { ...options, headers: buildHeaders([{Accept: '*/*'}, options?.headers]) });
   }
 }
 
@@ -66,5 +63,8 @@ export interface KeyCreateParams {
 }
 
 export declare namespace Keys {
-  export { type KeyCreateResponse as KeyCreateResponse, type KeyCreateParams as KeyCreateParams };
+  export {
+    type KeyCreateResponse as KeyCreateResponse,
+    type KeyCreateParams as KeyCreateParams
+  };
 }

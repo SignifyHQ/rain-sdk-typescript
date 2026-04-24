@@ -28,12 +28,8 @@ export class Ubo extends APIResource {
    *   );
    * ```
    */
-  update(
-    uboID: string,
-    params: UboUpdateParams,
-    options?: RequestOptions,
-  ): APIPromise<CompanyAPI.IssuingCompany> {
-    const { companyId, ...body } = params;
+  update(uboID: string, params: UboUpdateParams, options?: RequestOptions): APIPromise<CompanyAPI.IssuingCompany> {
+    const { companyId, ...body } = params
     return this._client.patch(path`/applications/company/${companyId}/ubo/${uboID}`, { body, ...options });
   }
 
@@ -44,18 +40,8 @@ export class Ubo extends APIResource {
    *
    * @deprecated
    */
-  uploadDocument(
-    companyID: string,
-    body: UboUploadDocumentParams,
-    options?: RequestOptions,
-  ): APIPromise<void> {
-    return this._client.put(
-      path`/applications/company/${companyID}/ubo/document`,
-      multipartFormRequestOptions(
-        { body, ...options, headers: buildHeaders([{ Accept: '*/*' }, options?.headers]) },
-        this._client,
-      ),
-    );
+  uploadDocument(companyID: string, body: UboUploadDocumentParams, options?: RequestOptions): APIPromise<void> {
+    return this._client.put(path`/applications/company/${companyID}/ubo/document`, multipartFormRequestOptions({ body, ...options, headers: buildHeaders([{Accept: '*/*'}, options?.headers]) }, this._client));
   }
 }
 
@@ -127,32 +113,19 @@ export interface UboUploadDocumentParams {
   /**
    * The type of the document being uploaded
    */
-  type?:
-    | 'idCard'
-    | 'passport'
-    | 'drivers'
-    | 'residencePermit'
-    | 'utilityBill'
-    | 'selfie'
-    | 'videoSelfie'
-    | 'profileImage'
-    | 'idDocPhoto'
-    | 'agreement'
-    | 'contract'
-    | 'driversTranslation'
-    | 'investorDoc'
-    | 'vehicleRegistrationCertificate'
-    | 'incomeSource'
-    | 'paymentMethod'
-    | 'bankCard'
-    | 'covidVaccinationForm'
-    | 'other';
+  type?: 'idCard' | 'passport' | 'drivers' | 'residencePermit' | 'utilityBill' | 'selfie' | 'videoSelfie' | 'profileImage' | 'idDocPhoto' | 'agreement' | 'contract' | 'driversTranslation' | 'investorDoc' | 'vehicleRegistrationCertificate' | 'incomeSource' | 'paymentMethod' | 'bankCard' | 'covidVaccinationForm' | 'other';
 }
 
 Ubo.Document = Document;
 
 export declare namespace Ubo {
-  export { type UboUpdateParams as UboUpdateParams, type UboUploadDocumentParams as UboUploadDocumentParams };
+  export {
+    type UboUpdateParams as UboUpdateParams,
+    type UboUploadDocumentParams as UboUploadDocumentParams
+  };
 
-  export { Document as Document, type DocumentUploadParams as DocumentUploadParams };
+  export {
+    Document as Document,
+    type DocumentUploadParams as DocumentUploadParams
+  };
 }

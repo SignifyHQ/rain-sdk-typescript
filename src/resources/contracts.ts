@@ -14,8 +14,10 @@ export class Contracts extends APIResource {
   }
 }
 
-export type ContractListResponse = Array<CompaniesAPI.IssuingContract>;
+export type ContractListResponse = Array<CompaniesAPI.IssuingContract>
 
 export declare namespace Contracts {
-  export { type ContractListResponse as ContractListResponse };
+  export {
+    type ContractListResponse as ContractListResponse
+  };
 }
