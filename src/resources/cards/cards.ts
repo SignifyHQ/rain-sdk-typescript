@@ -23,11 +23,7 @@ export class Cards extends APIResource {
    * Update details for an existing card, such as status, limit, billing address, and
    * configuration.
    */
-  update(
-    cardID: string,
-    body: CardUpdateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<IssuingCard> {
+  update(cardID: string, body: CardUpdateParams | null | undefined = {}, options?: RequestOptions): APIPromise<IssuingCard> {
     return this._client.patch(path`/cards/${cardID}`, { body, ...options });
   }
 
@@ -35,10 +31,7 @@ export class Cards extends APIResource {
    * Retrieves all cards associated with a user or company. You can filter by user or
    * company ID and card status.
    */
-  list(
-    query: CardListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<CardListResponse> {
+  list(query: CardListParams | null | undefined = {}, options?: RequestOptions): APIPromise<CardListResponse> {
     return this._client.get('/cards', { query, ...options });
   }
 
@@ -46,16 +39,9 @@ export class Cards extends APIResource {
    * Retrieve the encrypted data for a specific card, including the encrypted PAN and
    * CVC
    */
-  retrieveSecrets(
-    cardID: string,
-    params: CardRetrieveSecretsParams,
-    options?: RequestOptions,
-  ): APIPromise<CardRetrieveSecretsResponse> {
-    const { SessionId } = params;
-    return this._client.get(path`/cards/${cardID}/secrets`, {
-      ...options,
-      headers: buildHeaders([{ SessionId: SessionId }, options?.headers]),
-    });
+  retrieveSecrets(cardID: string, params: CardRetrieveSecretsParams, options?: RequestOptions): APIPromise<CardRetrieveSecretsResponse> {
+    const { SessionId } = params
+    return this._client.get(path`/cards/${cardID}/secrets`, { ...options, headers: buildHeaders([{SessionId: SessionId}, options?.headers]) });
   }
 }
 
@@ -120,21 +106,15 @@ export interface IssuingCardLimit {
   /**
    * The frequency at which the spending limit resets
    */
-  frequency:
-    | 'per24HourPeriod'
-    | 'per7DayPeriod'
-    | 'per30DayPeriod'
-    | 'perYearPeriod'
-    | 'allTime'
-    | 'perAuthorization';
+  frequency: 'per24HourPeriod' | 'per7DayPeriod' | 'per30DayPeriod' | 'perYearPeriod' | 'allTime' | 'perAuthorization';
 }
 
 /**
  * The current status of the card
  */
-export type IssuingCardStatus = 'notActivated' | 'active' | 'locked' | 'canceled';
+export type IssuingCardStatus = 'notActivated' | 'active' | 'locked' | 'canceled'
 
-export type CardListResponse = Array<IssuingCard>;
+export type CardListResponse = Array<IssuingCard>
 
 /**
  * The encrypted data for the card
@@ -262,13 +242,13 @@ export declare namespace Cards {
     type CardRetrieveSecretsResponse as CardRetrieveSecretsResponse,
     type CardUpdateParams as CardUpdateParams,
     type CardListParams as CardListParams,
-    type CardRetrieveSecretsParams as CardRetrieveSecretsParams,
+    type CardRetrieveSecretsParams as CardRetrieveSecretsParams
   };
 
   export {
     Pin as Pin,
     type PinRetrieveResponse as PinRetrieveResponse,
     type PinRetrieveParams as PinRetrieveParams,
-    type PinUpdateParams as PinUpdateParams,
+    type PinUpdateParams as PinUpdateParams
   };
 }

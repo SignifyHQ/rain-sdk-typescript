@@ -10,10 +10,7 @@ export class Signatures extends APIResource {
    * This endpoint retrieves the payment signature for an authorized user tenant. The
    * signature is used to authorize a payment transaction on a blockchain.
    */
-  retrievePaymentSignature(
-    query: SignatureRetrievePaymentSignatureParams,
-    options?: RequestOptions,
-  ): APIPromise<CompaniesSignaturesAPI.IssuingSignature> {
+  retrievePaymentSignature(query: SignatureRetrievePaymentSignatureParams, options?: RequestOptions): APIPromise<CompaniesSignaturesAPI.IssuingSignature> {
     return this._client.get('/signatures/payments', { query, ...options });
   }
 
@@ -21,10 +18,7 @@ export class Signatures extends APIResource {
    * This endpoint retrieves the withdrawal signature for an authorized user tenant.
    * The signature is used to authorize a withdrawal transaction on a blockchain.
    */
-  retrieveWithdrawalSignature(
-    query: SignatureRetrieveWithdrawalSignatureParams,
-    options?: RequestOptions,
-  ): APIPromise<CompaniesSignaturesAPI.IssuingSignature> {
+  retrieveWithdrawalSignature(query: SignatureRetrieveWithdrawalSignatureParams, options?: RequestOptions): APIPromise<CompaniesSignaturesAPI.IssuingSignature> {
     return this._client.get('/signatures/withdrawals', { query, ...options });
   }
 }
@@ -86,6 +80,6 @@ export interface SignatureRetrieveWithdrawalSignatureParams {
 export declare namespace Signatures {
   export {
     type SignatureRetrievePaymentSignatureParams as SignatureRetrievePaymentSignatureParams,
-    type SignatureRetrieveWithdrawalSignatureParams as SignatureRetrieveWithdrawalSignatureParams,
+    type SignatureRetrieveWithdrawalSignatureParams as SignatureRetrieveWithdrawalSignatureParams
   };
 }

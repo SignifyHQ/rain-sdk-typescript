@@ -59,11 +59,7 @@ export class User extends APIResource {
    * );
    * ```
    */
-  update(
-    userID: string,
-    body: UserUpdateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<IssuingUser> {
+  update(userID: string, body: UserUpdateParams | null | undefined = {}, options?: RequestOptions): APIPromise<IssuingUser> {
     return this._client.patch(path`/applications/user/${userID}`, { body, ...options });
   }
 
@@ -79,10 +75,7 @@ export class User extends APIResource {
    *   await client.applications.user.initiate();
    * ```
    */
-  initiate(
-    body: UserInitiateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<IssuingUser> {
+  initiate(body: UserInitiateParams | null | undefined = {}, options?: RequestOptions): APIPromise<IssuingUser> {
     return this._client.post('/applications/user/initiate', { body, ...options });
   }
 
@@ -111,13 +104,7 @@ export class User extends APIResource {
    * ```
    */
   uploadDocument(userID: string, body: UserUploadDocumentParams, options?: RequestOptions): APIPromise<void> {
-    return this._client.put(
-      path`/applications/user/${userID}/document`,
-      multipartFormRequestOptions(
-        { body, ...options, headers: buildHeaders([{ Accept: '*/*' }, options?.headers]) },
-        this._client,
-      ),
-    );
+    return this._client.put(path`/applications/user/${userID}/document`, multipartFormRequestOptions({ body, ...options, headers: buildHeaders([{Accept: '*/*'}, options?.headers]) }, this._client));
   }
 }
 
@@ -186,10 +173,7 @@ export interface UserRetrieveResponse extends CompanyAPI.IssuingApplication {
   id: string;
 }
 
-export type UserCreateParams =
-  | UserCreateParams.UsingSumsubShareToken
-  | UserCreateParams.UsingPersonaShareToken
-  | UserCreateParams.UsingAPI;
+export type UserCreateParams = UserCreateParams.UsingSumsubShareToken | UserCreateParams.UsingPersonaShareToken | UserCreateParams.UsingAPI
 
 export declare namespace UserCreateParams {
   export interface UsingSumsubShareToken {
@@ -631,26 +615,7 @@ export interface UserUploadDocumentParams {
   /**
    * The type of the document being uploaded
    */
-  type?:
-    | 'idCard'
-    | 'passport'
-    | 'drivers'
-    | 'residencePermit'
-    | 'utilityBill'
-    | 'selfie'
-    | 'videoSelfie'
-    | 'profileImage'
-    | 'idDocPhoto'
-    | 'agreement'
-    | 'contract'
-    | 'driversTranslation'
-    | 'investorDoc'
-    | 'vehicleRegistrationCertificate'
-    | 'incomeSource'
-    | 'paymentMethod'
-    | 'bankCard'
-    | 'covidVaccinationForm'
-    | 'other';
+  type?: 'idCard' | 'passport' | 'drivers' | 'residencePermit' | 'utilityBill' | 'selfie' | 'videoSelfie' | 'profileImage' | 'idDocPhoto' | 'agreement' | 'contract' | 'driversTranslation' | 'investorDoc' | 'vehicleRegistrationCertificate' | 'incomeSource' | 'paymentMethod' | 'bankCard' | 'covidVaccinationForm' | 'other';
 }
 
 export declare namespace User {
@@ -661,6 +626,6 @@ export declare namespace User {
     type UserUpdateParams as UserUpdateParams,
     type UserInitiateParams as UserInitiateParams,
     type UserReapplyParams as UserReapplyParams,
-    type UserUploadDocumentParams as UserUploadDocumentParams,
+    type UserUploadDocumentParams as UserUploadDocumentParams
   };
 }

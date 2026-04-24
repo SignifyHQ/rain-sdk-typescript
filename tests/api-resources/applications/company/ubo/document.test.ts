@@ -2,21 +2,12 @@
 
 import Rain, { toFile } from '@rainapi/rain-sdk';
 
-const client = new Rain({
-  apiKey: 'My API Key',
-  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
-});
+const client = new Rain({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
 
 describe('resource document', () => {
   // Mock server tests are disabled
   test.skip('upload: only required params', async () => {
-    const responsePromise = client.applications.company.ubo.document.upload(
-      '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-      {
-        companyId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-        document: await toFile(Buffer.from('Example data'), 'README.md'),
-      },
-    );
+    const responsePromise = client.applications.company.ubo.document.upload('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { companyId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', document: await toFile(Buffer.from('Example data'), 'README.md') });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -28,15 +19,12 @@ describe('resource document', () => {
 
   // Mock server tests are disabled
   test.skip('upload: required and optional params', async () => {
-    const response = await client.applications.company.ubo.document.upload(
-      '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-      {
-        companyId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-        document: await toFile(Buffer.from('Example data'), 'README.md'),
-        country: 'xxx',
-        side: 'front',
-        type: 'idCard',
-      },
-    );
+    const response = await client.applications.company.ubo.document.upload('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+    companyId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+    document: await toFile(Buffer.from('Example data'), 'README.md'),
+    country: 'xxx',
+    side: 'front',
+    type: 'idCard',
+  });
   });
 });

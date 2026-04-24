@@ -22,25 +22,14 @@ export class Disputes extends APIResource {
    * Update the status or evidence of a dispute, typically to mark it as canceled or
    * add new evidence.
    */
-  update(
-    disputeID: string,
-    body: DisputeUpdateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<void> {
-    return this._client.patch(path`/disputes/${disputeID}`, {
-      body,
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-    });
+  update(disputeID: string, body: DisputeUpdateParams | null | undefined = {}, options?: RequestOptions): APIPromise<void> {
+    return this._client.patch(path`/disputes/${disputeID}`, { body, ...options, headers: buildHeaders([{Accept: '*/*'}, options?.headers]) });
   }
 
   /**
    * Retrieve all disputes, optionally filtered by company, user, or transaction ID.
    */
-  list(
-    query: DisputeListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<DisputeListResponse> {
+  list(query: DisputeListParams | null | undefined = {}, options?: RequestOptions): APIPromise<DisputeListResponse> {
     return this._client.get('/disputes', { query, ...options });
   }
 }
@@ -80,7 +69,7 @@ export interface IssuingDispute {
   textEvidence?: string;
 }
 
-export type DisputeListResponse = Array<IssuingDispute>;
+export type DisputeListResponse = Array<IssuingDispute>
 
 export interface DisputeUpdateParams {
   /**
@@ -128,8 +117,11 @@ export declare namespace Disputes {
     type IssuingDispute as IssuingDispute,
     type DisputeListResponse as DisputeListResponse,
     type DisputeUpdateParams as DisputeUpdateParams,
-    type DisputeListParams as DisputeListParams,
+    type DisputeListParams as DisputeListParams
   };
 
-  export { Evidence as Evidence, type EvidenceUploadParams as EvidenceUploadParams };
+  export {
+    Evidence as Evidence,
+    type EvidenceUploadParams as EvidenceUploadParams
+  };
 }

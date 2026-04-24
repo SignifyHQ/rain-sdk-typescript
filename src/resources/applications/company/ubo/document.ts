@@ -26,14 +26,8 @@ export class Document extends APIResource {
    * ```
    */
   upload(uboID: string, params: DocumentUploadParams, options?: RequestOptions): APIPromise<void> {
-    const { companyId, ...body } = params;
-    return this._client.put(
-      path`/applications/company/${companyId}/ubo/${uboID}/document`,
-      multipartFormRequestOptions(
-        { body, ...options, headers: buildHeaders([{ Accept: '*/*' }, options?.headers]) },
-        this._client,
-      ),
-    );
+    const { companyId, ...body } = params
+    return this._client.put(path`/applications/company/${companyId}/ubo/${uboID}/document`, multipartFormRequestOptions({ body, ...options, headers: buildHeaders([{Accept: '*/*'}, options?.headers]) }, this._client));
   }
 }
 
@@ -62,28 +56,11 @@ export interface DocumentUploadParams {
   /**
    * Body param: The type of the document being uploaded
    */
-  type?:
-    | 'idCard'
-    | 'passport'
-    | 'drivers'
-    | 'residencePermit'
-    | 'utilityBill'
-    | 'selfie'
-    | 'videoSelfie'
-    | 'profileImage'
-    | 'idDocPhoto'
-    | 'agreement'
-    | 'contract'
-    | 'driversTranslation'
-    | 'investorDoc'
-    | 'vehicleRegistrationCertificate'
-    | 'incomeSource'
-    | 'paymentMethod'
-    | 'bankCard'
-    | 'covidVaccinationForm'
-    | 'other';
+  type?: 'idCard' | 'passport' | 'drivers' | 'residencePermit' | 'utilityBill' | 'selfie' | 'videoSelfie' | 'profileImage' | 'idDocPhoto' | 'agreement' | 'contract' | 'driversTranslation' | 'investorDoc' | 'vehicleRegistrationCertificate' | 'incomeSource' | 'paymentMethod' | 'bankCard' | 'covidVaccinationForm' | 'other';
 }
 
 export declare namespace Document {
-  export { type DocumentUploadParams as DocumentUploadParams };
+  export {
+    type DocumentUploadParams as DocumentUploadParams
+  };
 }

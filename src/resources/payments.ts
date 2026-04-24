@@ -42,6 +42,6 @@ export interface PaymentInitiateParams {
 export declare namespace Payments {
   export {
     type PaymentInitiateResponse as PaymentInitiateResponse,
-    type PaymentInitiateParams as PaymentInitiateParams,
+    type PaymentInitiateParams as PaymentInitiateParams
   };
 }
