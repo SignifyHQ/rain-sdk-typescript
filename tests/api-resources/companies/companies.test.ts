@@ -2,7 +2,10 @@
 
 import Rain from '@rainapi/rain-sdk';
 
-const client = new Rain({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
+const client = new Rain({
+  apiKey: 'My API Key',
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource companies', () => {
   // Mock server tests are disabled
@@ -32,20 +35,24 @@ describe('resource companies', () => {
   // Mock server tests are disabled
   test.skip('update: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.companies.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-    address: {
-    city: 'city',
-    country: 'country',
-    countryCode: 'xx',
-    line1: 'line1',
-    postalCode: 'postalCode',
-    region: 'region',
-    line2: 'line2',
-  },
-    name: 'name',
-  }, { path: '/_stainless_unknown_path' }))
-      .rejects
-      .toThrow(Rain.NotFoundError);
+    await expect(
+      client.companies.update(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        {
+          address: {
+            city: 'city',
+            country: 'country',
+            countryCode: 'xx',
+            line1: 'line1',
+            postalCode: 'postalCode',
+            region: 'region',
+            line2: 'line2',
+          },
+          name: 'name',
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(Rain.NotFoundError);
   });
 
   // Mock server tests are disabled
@@ -63,14 +70,17 @@ describe('resource companies', () => {
   // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.companies.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }))
-      .rejects
-      .toThrow(Rain.NotFoundError);
+    await expect(
+      client.companies.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Rain.NotFoundError);
   });
 
   // Mock server tests are disabled
   test.skip('charge: only required params', async () => {
-    const responsePromise = client.companies.charge('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { amount: 1, description: 'description' });
+    const responsePromise = client.companies.charge('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      amount: 1,
+      description: 'description',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -82,17 +92,20 @@ describe('resource companies', () => {
 
   // Mock server tests are disabled
   test.skip('charge: required and optional params', async () => {
-    const response = await client.companies.charge('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { amount: 1, description: 'description' });
+    const response = await client.companies.charge('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      amount: 1,
+      description: 'description',
+    });
   });
 
   // Mock server tests are disabled
   test.skip('createUser: only required params', async () => {
     const responsePromise = client.companies.createUser('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-    email: 'email',
-    firstName: 'firstName',
-    isTermsOfServiceAccepted: true,
-    lastName: 'lastName',
-  });
+      email: 'email',
+      firstName: 'firstName',
+      isTermsOfServiceAccepted: true,
+      lastName: 'lastName',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -105,29 +118,32 @@ describe('resource companies', () => {
   // Mock server tests are disabled
   test.skip('createUser: required and optional params', async () => {
     const response = await client.companies.createUser('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-    email: 'email',
-    firstName: 'firstName',
-    isTermsOfServiceAccepted: true,
-    lastName: 'lastName',
-    address: {
-    city: 'city',
-    country: 'country',
-    countryCode: 'xx',
-    line1: 'line1',
-    postalCode: 'postalCode',
-    region: 'region',
-    line2: 'line2',
-  },
-    birthDate: '2019-12-27',
-    phoneCountryCode: 'phoneCountryCode',
-    phoneNumber: 'phoneNumber',
-    walletAddress: '0xE1CB97d8EBbDbaAae6d9B1ca0D1cFaADcCcbdaDa',
-  });
+      email: 'email',
+      firstName: 'firstName',
+      isTermsOfServiceAccepted: true,
+      lastName: 'lastName',
+      address: {
+        city: 'city',
+        country: 'country',
+        countryCode: 'xx',
+        line1: 'line1',
+        postalCode: 'postalCode',
+        region: 'region',
+        line2: 'line2',
+      },
+      birthDate: '2019-12-27',
+      phoneCountryCode: 'phoneCountryCode',
+      phoneNumber: 'phoneNumber',
+      walletAddress: '0xE1CB97d8EBbDbaAae6d9B1ca0D1cFaADcCcbdaDa',
+    });
   });
 
   // Mock server tests are disabled
   test.skip('initiatePayment: only required params', async () => {
-    const responsePromise = client.companies.initiatePayment('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { amount: 0, walletAddress: '0xE1CB97d8EBbDbaAae6d9B1ca0D1cFaADcCcbdaDa' });
+    const responsePromise = client.companies.initiatePayment('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      amount: 0,
+      walletAddress: '0xE1CB97d8EBbDbaAae6d9B1ca0D1cFaADcCcbdaDa',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -140,10 +156,10 @@ describe('resource companies', () => {
   // Mock server tests are disabled
   test.skip('initiatePayment: required and optional params', async () => {
     const response = await client.companies.initiatePayment('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-    amount: 0,
-    walletAddress: '0xE1CB97d8EBbDbaAae6d9B1ca0D1cFaADcCcbdaDa',
-    chainId: 0,
-  });
+      amount: 0,
+      walletAddress: '0xE1CB97d8EBbDbaAae6d9B1ca0D1cFaADcCcbdaDa',
+      chainId: 0,
+    });
   });
 
   // Mock server tests are disabled

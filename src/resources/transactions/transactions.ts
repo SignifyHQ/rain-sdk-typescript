@@ -25,15 +25,26 @@ export class Transactions extends APIResource {
    * This endpoint allows updating a specific transaction by its ID. You can modify
    * the transaction's memo or other editable fields.
    */
-  update(transactionID: string, body: TransactionUpdateParams | null | undefined = {}, options?: RequestOptions): APIPromise<void> {
-    return this._client.patch(path`/transactions/${transactionID}`, { body, ...options, headers: buildHeaders([{Accept: '*/*'}, options?.headers]) });
+  update(
+    transactionID: string,
+    body: TransactionUpdateParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<void> {
+    return this._client.patch(path`/transactions/${transactionID}`, {
+      body,
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
   }
 
   /**
    * This endpoint retrieves all transactions associated with corporate cards, users,
    * or specific cards.
    */
-  list(query: TransactionListParams | null | undefined = {}, options?: RequestOptions): APIPromise<TransactionListResponse> {
+  list(
+    query: TransactionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<TransactionListResponse> {
     return this._client.get('/transactions', { query, ...options });
   }
 
@@ -41,7 +52,11 @@ export class Transactions extends APIResource {
    * This endpoint allows the creation of a dispute for a specific transaction. The
    * dispute can include textual evidence to support the claim.
    */
-  createDispute(transactionID: string, body: TransactionCreateDisputeParams | null | undefined = {}, options?: RequestOptions): APIPromise<DisputesAPI.IssuingDispute> {
+  createDispute(
+    transactionID: string,
+    body: TransactionCreateDisputeParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<DisputesAPI.IssuingDispute> {
     return this._client.post(path`/transactions/${transactionID}/disputes`, { body, ...options });
   }
 }
@@ -50,7 +65,11 @@ export class Transactions extends APIResource {
  * Represents a transaction of type 'spend'. This includes details such as the
  * transaction amount, merchant, and the associated user.
  */
-export type IssuingTransaction = IssuingTransaction.SpendTransaction | IssuingTransaction.CollateralTransaction | IssuingTransaction.PaymentTransaction | IssuingTransaction.FeeTransaction
+export type IssuingTransaction =
+  | IssuingTransaction.SpendTransaction
+  | IssuingTransaction.CollateralTransaction
+  | IssuingTransaction.PaymentTransaction
+  | IssuingTransaction.FeeTransaction;
 
 export namespace IssuingTransaction {
   /**
@@ -414,7 +433,7 @@ export namespace IssuingTransaction {
   }
 }
 
-export type TransactionListResponse = Array<IssuingTransaction>
+export type TransactionListResponse = Array<IssuingTransaction>;
 
 export interface TransactionUpdateParams {
   /**
@@ -496,11 +515,8 @@ export declare namespace Transactions {
     type TransactionListResponse as TransactionListResponse,
     type TransactionUpdateParams as TransactionUpdateParams,
     type TransactionListParams as TransactionListParams,
-    type TransactionCreateDisputeParams as TransactionCreateDisputeParams
+    type TransactionCreateDisputeParams as TransactionCreateDisputeParams,
   };
 
-  export {
-    Receipt as Receipt,
-    type ReceiptUploadParams as ReceiptUploadParams
-  };
+  export { Receipt as Receipt, type ReceiptUploadParams as ReceiptUploadParams };
 }

@@ -24,7 +24,11 @@ export class Signatures extends APIResource {
    *   );
    * ```
    */
-  retrievePaymentSignature(userID: string, query: SignatureRetrievePaymentSignatureParams, options?: RequestOptions): APIPromise<SignaturesAPI.IssuingSignature> {
+  retrievePaymentSignature(
+    userID: string,
+    query: SignatureRetrievePaymentSignatureParams,
+    options?: RequestOptions,
+  ): APIPromise<SignaturesAPI.IssuingSignature> {
     return this._client.get(path`/users/${userID}/signatures/payments`, { query, ...options });
   }
 
@@ -46,7 +50,11 @@ export class Signatures extends APIResource {
    *   );
    * ```
    */
-  retrieveWithdrawalSignature(userID: string, query: SignatureRetrieveWithdrawalSignatureParams, options?: RequestOptions): APIPromise<SignaturesAPI.IssuingSignature> {
+  retrieveWithdrawalSignature(
+    userID: string,
+    query: SignatureRetrieveWithdrawalSignatureParams,
+    options?: RequestOptions,
+  ): APIPromise<SignaturesAPI.IssuingSignature> {
     return this._client.get(path`/users/${userID}/signatures/withdrawals`, { query, ...options });
   }
 }
@@ -108,6 +116,6 @@ export interface SignatureRetrieveWithdrawalSignatureParams {
 export declare namespace Signatures {
   export {
     type SignatureRetrievePaymentSignatureParams as SignatureRetrievePaymentSignatureParams,
-    type SignatureRetrieveWithdrawalSignatureParams as SignatureRetrieveWithdrawalSignatureParams
+    type SignatureRetrieveWithdrawalSignatureParams as SignatureRetrieveWithdrawalSignatureParams,
   };
 }

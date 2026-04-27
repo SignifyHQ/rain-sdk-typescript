@@ -10,7 +10,11 @@ export class Signatures extends APIResource {
    * Retrieve the payment signature for a company, which is required for completing
    * payment transactions.
    */
-  retrievePaymentSignature(companyID: string, query: SignatureRetrievePaymentSignatureParams, options?: RequestOptions): APIPromise<IssuingSignature> {
+  retrievePaymentSignature(
+    companyID: string,
+    query: SignatureRetrievePaymentSignatureParams,
+    options?: RequestOptions,
+  ): APIPromise<IssuingSignature> {
     return this._client.get(path`/companies/${companyID}/signatures/payments`, { query, ...options });
   }
 
@@ -18,7 +22,11 @@ export class Signatures extends APIResource {
    * Retrieve the withdrawal signature for a company, which is required for
    * processing withdrawal requests.
    */
-  retrieveWithdrawalSignature(companyID: string, query: SignatureRetrieveWithdrawalSignatureParams, options?: RequestOptions): APIPromise<IssuingSignature> {
+  retrieveWithdrawalSignature(
+    companyID: string,
+    query: SignatureRetrieveWithdrawalSignatureParams,
+    options?: RequestOptions,
+  ): APIPromise<IssuingSignature> {
     return this._client.get(path`/companies/${companyID}/signatures/withdrawals`, { query, ...options });
   }
 }
@@ -27,7 +35,7 @@ export class Signatures extends APIResource {
  * Indicates the signature is pending and provides the time after which a retry is
  * possible.
  */
-export type IssuingSignature = IssuingSignature.IfSignatureIsPending | IssuingSignature.IfSignatureIsReady
+export type IssuingSignature = IssuingSignature.IfSignatureIsPending | IssuingSignature.IfSignatureIsReady;
 
 export namespace IssuingSignature {
   /**
@@ -149,6 +157,6 @@ export declare namespace Signatures {
   export {
     type IssuingSignature as IssuingSignature,
     type SignatureRetrievePaymentSignatureParams as SignatureRetrievePaymentSignatureParams,
-    type SignatureRetrieveWithdrawalSignatureParams as SignatureRetrieveWithdrawalSignatureParams
+    type SignatureRetrieveWithdrawalSignatureParams as SignatureRetrieveWithdrawalSignatureParams,
   };
 }

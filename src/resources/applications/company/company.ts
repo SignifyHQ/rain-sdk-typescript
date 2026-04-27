@@ -105,7 +105,11 @@ export class Company extends APIResource {
    *   );
    * ```
    */
-  update(companyID: string, body: CompanyUpdateParams | null | undefined = {}, options?: RequestOptions): APIPromise<IssuingCompany> {
+  update(
+    companyID: string,
+    body: CompanyUpdateParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<IssuingCompany> {
     return this._client.patch(path`/applications/company/${companyID}`, { body, ...options });
   }
 
@@ -116,7 +120,11 @@ export class Company extends APIResource {
    *
    * @deprecated
    */
-  reapply(companyID: string, body: CompanyReapplyParams, options?: RequestOptions): APIPromise<IssuingCompany> {
+  reapply(
+    companyID: string,
+    body: CompanyReapplyParams,
+    options?: RequestOptions,
+  ): APIPromise<IssuingCompany> {
     return this._client.put(path`/applications/company/${companyID}/reapply`, { body, ...options });
   }
 
@@ -133,8 +141,18 @@ export class Company extends APIResource {
    * );
    * ```
    */
-  uploadDocument(companyID: string, body: CompanyUploadDocumentParams, options?: RequestOptions): APIPromise<void> {
-    return this._client.put(path`/applications/company/${companyID}/document`, multipartFormRequestOptions({ body, ...options, headers: buildHeaders([{Accept: '*/*'}, options?.headers]) }, this._client));
+  uploadDocument(
+    companyID: string,
+    body: CompanyUploadDocumentParams,
+    options?: RequestOptions,
+  ): APIPromise<void> {
+    return this._client.put(
+      path`/applications/company/${companyID}/document`,
+      multipartFormRequestOptions(
+        { body, ...options, headers: buildHeaders([{ Accept: '*/*' }, options?.headers]) },
+        this._client,
+      ),
+    );
   }
 }
 
@@ -145,7 +163,15 @@ export interface IssuingApplication {
   /**
    * Represents the possible statuses of an application.
    */
-  applicationStatus: 'approved' | 'pending' | 'needsInformation' | 'needsVerification' | 'manualReview' | 'denied' | 'locked' | 'canceled';
+  applicationStatus:
+    | 'approved'
+    | 'pending'
+    | 'needsInformation'
+    | 'needsVerification'
+    | 'manualReview'
+    | 'denied'
+    | 'locked'
+    | 'canceled';
 
   /**
    * The link to the application completion page
@@ -686,7 +712,19 @@ export interface CompanyUploadDocumentParams {
   /**
    * The type of the document being uploaded
    */
-  type?: 'directorsRegistry' | 'stateRegistry' | 'incumbencyCert' | 'proofOfAddress' | 'trustAgreement' | 'informationStatement' | 'incorporationCert' | 'incorporationArticles' | 'shareholderRegistry' | 'goodStandingCert' | 'powerOfAttorney' | 'other';
+  type?:
+    | 'directorsRegistry'
+    | 'stateRegistry'
+    | 'incumbencyCert'
+    | 'proofOfAddress'
+    | 'trustAgreement'
+    | 'informationStatement'
+    | 'incorporationCert'
+    | 'incorporationArticles'
+    | 'shareholderRegistry'
+    | 'goodStandingCert'
+    | 'powerOfAttorney'
+    | 'other';
 }
 
 Company.Ubo = Ubo;
@@ -701,12 +739,12 @@ export declare namespace Company {
     type CompanyCreateParams as CompanyCreateParams,
     type CompanyUpdateParams as CompanyUpdateParams,
     type CompanyReapplyParams as CompanyReapplyParams,
-    type CompanyUploadDocumentParams as CompanyUploadDocumentParams
+    type CompanyUploadDocumentParams as CompanyUploadDocumentParams,
   };
 
   export {
     Ubo as Ubo,
     type UboUpdateParams as UboUpdateParams,
-    type UboUploadDocumentParams as UboUploadDocumentParams
+    type UboUploadDocumentParams as UboUploadDocumentParams,
   };
 }

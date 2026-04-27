@@ -14,7 +14,11 @@ export class Receipt extends APIResource {
    * returned as a binary file, typically in PDF or similar format.
    */
   retrieve(transactionID: string, options?: RequestOptions): APIPromise<Response> {
-    return this._client.get(path`/transactions/${transactionID}/receipt`, { ...options, headers: buildHeaders([{Accept: 'application/octet-stream'}, options?.headers]), __binaryResponse: true });
+    return this._client.get(path`/transactions/${transactionID}/receipt`, {
+      ...options,
+      headers: buildHeaders([{ Accept: 'application/octet-stream' }, options?.headers]),
+      __binaryResponse: true,
+    });
   }
 
   /**
@@ -22,7 +26,13 @@ export class Receipt extends APIResource {
    * receipt is provided as a binary file, typically in PDF format.
    */
   upload(transactionID: string, body: ReceiptUploadParams, options?: RequestOptions): APIPromise<void> {
-    return this._client.put(path`/transactions/${transactionID}/receipt`, multipartFormRequestOptions({ body, ...options, headers: buildHeaders([{Accept: '*/*'}, options?.headers]) }, this._client));
+    return this._client.put(
+      path`/transactions/${transactionID}/receipt`,
+      multipartFormRequestOptions(
+        { body, ...options, headers: buildHeaders([{ Accept: '*/*' }, options?.headers]) },
+        this._client,
+      ),
+    );
   }
 }
 
@@ -34,7 +44,5 @@ export interface ReceiptUploadParams {
 }
 
 export declare namespace Receipt {
-  export {
-    type ReceiptUploadParams as ReceiptUploadParams
-  };
+  export { type ReceiptUploadParams as ReceiptUploadParams };
 }
