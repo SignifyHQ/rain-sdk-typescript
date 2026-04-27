@@ -21,18 +21,77 @@ import { BalanceRetrieveResponse, Balances } from './resources/balances';
 import { ContractListResponse, Contracts } from './resources/contracts';
 import { KeyCreateParams, KeyCreateResponse, Keys } from './resources/keys';
 import { PaymentInitiateParams, PaymentInitiateResponse, Payments } from './resources/payments';
-import { SignatureRetrievePaymentSignatureParams, SignatureRetrieveWithdrawalSignatureParams, Signatures } from './resources/signatures';
+import {
+  SignatureRetrievePaymentSignatureParams,
+  SignatureRetrieveWithdrawalSignatureParams,
+  Signatures,
+} from './resources/signatures';
 import { Applications } from './resources/applications/applications';
-import { CardListParams, CardListResponse, CardRetrieveSecretsParams, CardRetrieveSecretsResponse, CardUpdateParams, Cards, IssuingCard, IssuingCardLimit, IssuingCardStatus } from './resources/cards/cards';
-import { Companies, CompanyChargeParams, CompanyCreateUserParams, CompanyInitiatePaymentParams, CompanyInitiatePaymentResponse, CompanyListParams, CompanyListResponse, CompanyRetrieveBalancesResponse, CompanyRetrieveContractsResponse, CompanyUpdateParams, IssuingChargeCreateBody, IssuingChargeCreateResponse, IssuingContract } from './resources/companies/companies';
-import { DisputeListParams, DisputeListResponse, DisputeUpdateParams, Disputes, IssuingDispute } from './resources/disputes/disputes';
-import { IssuingTransaction, TransactionCreateDisputeParams, TransactionListParams, TransactionListResponse, TransactionUpdateParams, Transactions } from './resources/transactions/transactions';
-import { UserCreateCardParams, UserCreateChargeParams, UserCreateParams, UserInitiatePaymentParams, UserInitiatePaymentResponse, UserListParams, UserListResponse, UserRetrieveBalancesResponse, UserRetrieveContractsResponse, UserUpdateParams, Users } from './resources/users/users';
+import {
+  CardListParams,
+  CardListResponse,
+  CardRetrieveSecretsParams,
+  CardRetrieveSecretsResponse,
+  CardUpdateParams,
+  Cards,
+  IssuingCard,
+  IssuingCardLimit,
+  IssuingCardStatus,
+} from './resources/cards/cards';
+import {
+  Companies,
+  CompanyChargeParams,
+  CompanyCreateUserParams,
+  CompanyInitiatePaymentParams,
+  CompanyInitiatePaymentResponse,
+  CompanyListParams,
+  CompanyListResponse,
+  CompanyRetrieveBalancesResponse,
+  CompanyRetrieveContractsResponse,
+  CompanyUpdateParams,
+  IssuingChargeCreateBody,
+  IssuingChargeCreateResponse,
+  IssuingContract,
+} from './resources/companies/companies';
+import {
+  DisputeListParams,
+  DisputeListResponse,
+  DisputeUpdateParams,
+  Disputes,
+  IssuingDispute,
+} from './resources/disputes/disputes';
+import {
+  IssuingTransaction,
+  TransactionCreateDisputeParams,
+  TransactionListParams,
+  TransactionListResponse,
+  TransactionUpdateParams,
+  Transactions,
+} from './resources/transactions/transactions';
+import {
+  UserCreateCardParams,
+  UserCreateChargeParams,
+  UserCreateParams,
+  UserInitiatePaymentParams,
+  UserInitiatePaymentResponse,
+  UserListParams,
+  UserListResponse,
+  UserRetrieveBalancesResponse,
+  UserRetrieveContractsResponse,
+  UserUpdateParams,
+  Users,
+} from './resources/users/users';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import { readEnv } from './internal/utils/env';
-import { type LogLevel, type Logger, formatRequestDetails, loggerFor, parseLogLevel } from './internal/utils/log';
+import {
+  type LogLevel,
+  type Logger,
+  formatRequestDetails,
+  loggerFor,
+  parseLogLevel,
+} from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
 
 const environments = {
@@ -126,7 +185,7 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Rain API. 
+ * API Client for interfacing with the Rain API.
  */
 export class Rain {
   apiKey: string;
@@ -163,7 +222,7 @@ export class Rain {
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.RainError(
-        'The RAIN_API_KEY environment variable is missing or empty; either provide it, or instantiate the Rain client with an apiKey option, like new Rain({ apiKey: \'My API Key\' }).'
+        "The RAIN_API_KEY environment variable is missing or empty; either provide it, or instantiate the Rain client with an apiKey option, like new Rain({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -176,8 +235,8 @@ export class Rain {
 
     if (baseURL && opts.environment) {
       throw new Errors.RainError(
-        'Ambiguous URL; The `baseURL` option (or RAIN_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null'
-      )
+        'Ambiguous URL; The `baseURL` option (or RAIN_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
+      );
     }
 
     this.baseURL = options.baseURL || environments[options.environment || 'dev'];
@@ -186,7 +245,10 @@ export class Rain {
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
     this.logLevel = defaultLogLevel;
-    this.logLevel = parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ?? parseLogLevel(readEnv('RAIN_LOG'), 'process.env[\'RAIN_LOG\']', this) ?? defaultLogLevel;
+    this.logLevel =
+      parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
+      parseLogLevel(readEnv('RAIN_LOG'), "process.env['RAIN_LOG']", this) ??
+      defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
     this.fetch = options.fetch ?? Shims.getDefaultFetch();
@@ -212,7 +274,7 @@ export class Rain {
       fetch: this.fetch,
       fetchOptions: this.fetchOptions,
       apiKey: this.apiKey,
-      ...options
+      ...options,
     });
     return client;
   }
@@ -225,7 +287,7 @@ export class Rain {
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {
-    return this._options.defaultQuery
+    return this._options.defaultQuery;
   }
 
   protected validateHeaders({ values, nulls }: NullableHeaders) {
@@ -257,7 +319,11 @@ export class Rain {
     return Errors.APIError.generate(status, error, message, headers);
   }
 
-  buildURL(path: string, query: Record<string, unknown> | null | undefined, defaultBaseURL?: string | undefined): string {
+  buildURL(
+    path: string,
+    query: Record<string, unknown> | null | undefined,
+    defaultBaseURL?: string | undefined,
+  ): string {
     const baseURL = (!this.#baseURLOverridden() && defaultBaseURL) || this.baseURL;
     const url =
       isAbsoluteURL(path) ?
@@ -345,7 +411,9 @@ export class Rain {
 
     await this.prepareOptions(options);
 
-    const { req, url, timeout } = await this.buildRequest(options, { retryCount: maxRetries - retriesRemaining });
+    const { req, url, timeout } = await this.buildRequest(options, {
+      retryCount: maxRetries - retriesRemaining,
+    });
 
     await this.prepareRequest(req, { url, options });
 
@@ -354,7 +422,16 @@ export class Rain {
     const retryLogStr = retryOfRequestLogID === undefined ? '' : `, retryOf: ${retryOfRequestLogID}`;
     const startTime = Date.now();
 
-    loggerFor(this).debug(`[${requestLogID}] sending request`, formatRequestDetails({ retryOfRequestLogID, method: options.method, url, options, headers: req.headers }));
+    loggerFor(this).debug(
+      `[${requestLogID}] sending request`,
+      formatRequestDetails({
+        retryOfRequestLogID,
+        method: options.method,
+        url,
+        options,
+        headers: req.headers,
+      }),
+    );
 
     if (options.signal?.aborted) {
       throw new Errors.APIUserAbortError();
@@ -373,21 +450,45 @@ export class Rain {
       // deno throws "TypeError: error sending request for url (https://example/): client error (Connect): tcp connect error: Operation timed out (os error 60): Operation timed out (os error 60)"
       // undici throws "TypeError: fetch failed" with cause "ConnectTimeoutError: Connect Timeout Error (attempted address: example:443, timeout: 1ms)"
       // others do not provide enough information to distinguish timeouts from other connection errors
-      const isTimeout = isAbortError(response) || /timed? ?out/i.test(String(response) + ('cause' in response ? String(response.cause) : ''))
+      const isTimeout =
+        isAbortError(response) ||
+        /timed? ?out/i.test(String(response) + ('cause' in response ? String(response.cause) : ''));
       if (retriesRemaining) {
-        loggerFor(this).info(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - ${retryMessage}`)
-        loggerFor(this).debug(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (${retryMessage})`, formatRequestDetails({ retryOfRequestLogID, url, durationMs: headersTime - startTime, message: response.message }));
+        loggerFor(this).info(
+          `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - ${retryMessage}`,
+        );
+        loggerFor(this).debug(
+          `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (${retryMessage})`,
+          formatRequestDetails({
+            retryOfRequestLogID,
+            url,
+            durationMs: headersTime - startTime,
+            message: response.message,
+          }),
+        );
         return this.retryRequest(options, retriesRemaining, retryOfRequestLogID ?? requestLogID);
       }
-      loggerFor(this).info(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - error; no more retries left`)
-      loggerFor(this).debug(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (error; no more retries left)`, formatRequestDetails({ retryOfRequestLogID, url, durationMs: headersTime - startTime, message: response.message }));
+      loggerFor(this).info(
+        `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - error; no more retries left`,
+      );
+      loggerFor(this).debug(
+        `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (error; no more retries left)`,
+        formatRequestDetails({
+          retryOfRequestLogID,
+          url,
+          durationMs: headersTime - startTime,
+          message: response.message,
+        }),
+      );
       if (isTimeout) {
         throw new Errors.APIConnectionTimeoutError();
       }
       throw new Errors.APIConnectionError({ cause: response });
     }
 
-    const responseInfo = `[${requestLogID}${retryLogStr}] ${req.method} ${url} ${response.ok ? 'succeeded' : 'failed'} with status ${response.status} in ${headersTime - startTime}ms`;
+    const responseInfo = `[${requestLogID}${retryLogStr}] ${req.method} ${url} ${
+      response.ok ? 'succeeded' : 'failed'
+    } with status ${response.status} in ${headersTime - startTime}ms`;
 
     if (!response.ok) {
       const shouldRetry = await this.shouldRetry(response);
@@ -396,27 +497,60 @@ export class Rain {
 
         // We don't need the body of this response.
         await Shims.CancelReadableStream(response.body);
-        loggerFor(this).info(`${responseInfo} - ${retryMessage}`)
-        loggerFor(this).debug(`[${requestLogID}] response error (${retryMessage})`, formatRequestDetails({ retryOfRequestLogID, url: response.url, status: response.status, headers: response.headers, durationMs: headersTime - startTime }));
-        return this.retryRequest(options, retriesRemaining, retryOfRequestLogID ?? requestLogID, response.headers);
+        loggerFor(this).info(`${responseInfo} - ${retryMessage}`);
+        loggerFor(this).debug(
+          `[${requestLogID}] response error (${retryMessage})`,
+          formatRequestDetails({
+            retryOfRequestLogID,
+            url: response.url,
+            status: response.status,
+            headers: response.headers,
+            durationMs: headersTime - startTime,
+          }),
+        );
+        return this.retryRequest(
+          options,
+          retriesRemaining,
+          retryOfRequestLogID ?? requestLogID,
+          response.headers,
+        );
       }
 
       const retryMessage = shouldRetry ? `error; no more retries left` : `error; not retryable`;
 
-      loggerFor(this).info(`${responseInfo} - ${retryMessage}`)
+      loggerFor(this).info(`${responseInfo} - ${retryMessage}`);
 
       const errText = await response.text().catch((err: any) => castToError(err).message);
       const errJSON = safeJSON(errText) as any;
       const errMessage = errJSON ? undefined : errText;
 
-      loggerFor(this).debug(`[${requestLogID}] response error (${retryMessage})`, formatRequestDetails({ retryOfRequestLogID, url: response.url, status: response.status, headers: response.headers, message: errMessage, durationMs: Date.now() - startTime }));
+      loggerFor(this).debug(
+        `[${requestLogID}] response error (${retryMessage})`,
+        formatRequestDetails({
+          retryOfRequestLogID,
+          url: response.url,
+          status: response.status,
+          headers: response.headers,
+          message: errMessage,
+          durationMs: Date.now() - startTime,
+        }),
+      );
 
       const err = this.makeStatusError(response.status, errJSON, errMessage, response.headers);
       throw err;
     }
 
-    loggerFor(this).info(responseInfo)
-    loggerFor(this).debug(`[${requestLogID}] response start`, formatRequestDetails({ retryOfRequestLogID, url: response.url, status: response.status, headers: response.headers, durationMs: headersTime - startTime }));
+    loggerFor(this).info(responseInfo);
+    loggerFor(this).debug(
+      `[${requestLogID}] response start`,
+      formatRequestDetails({
+        retryOfRequestLogID,
+        url: response.url,
+        status: response.status,
+        headers: response.headers,
+        durationMs: headersTime - startTime,
+      }),
+    );
 
     return { response, options, controller, requestLogID, retryOfRequestLogID, startTime };
   }
@@ -433,7 +567,9 @@ export class Rain {
 
     const timeout = setTimeout(abort, ms);
 
-    const isReadableBody = ((globalThis as any).ReadableStream && options.body instanceof (globalThis as any).ReadableStream) || (typeof options.body === "object" && options.body !== null && Symbol.asyncIterator in options.body);
+    const isReadableBody =
+      ((globalThis as any).ReadableStream && options.body instanceof (globalThis as any).ReadableStream) ||
+      (typeof options.body === 'object' && options.body !== null && Symbol.asyncIterator in options.body);
 
     const fetchOptions: RequestInit = {
       signal: controller.signal as any,
@@ -448,7 +584,6 @@ export class Rain {
     }
 
     try {
-
       // use undefined this binding; fetch errors if bound to something else in browser/cloudflare
       return await this.fetch.call(undefined, url, fetchOptions);
     } finally {
@@ -549,11 +684,12 @@ export class Rain {
     const req: FinalizedRequestInit = {
       method,
       headers: reqHeaders,
-      ...(options.signal && { signal: options.signal}),
-      ...((globalThis as any).ReadableStream && body instanceof (globalThis as any).ReadableStream && { duplex: "half" }),
+      ...(options.signal && { signal: options.signal }),
+      ...((globalThis as any).ReadableStream &&
+        body instanceof (globalThis as any).ReadableStream && { duplex: 'half' }),
       ...(body && { body }),
-      ...(this.fetchOptions as any ?? {}),
-      ...(options.fetchOptions as any ?? {}),
+      ...((this.fetchOptions as any) ?? {}),
+      ...((options.fetchOptions as any) ?? {}),
     };
 
     return { req, url, timeout: options.timeout };
@@ -578,15 +714,17 @@ export class Rain {
 
     const headers = buildHeaders([
       idempotencyHeaders,
-      {Accept: 'application/json',
-      'User-Agent': this.getUserAgent(),
-      'X-Stainless-Retry-Count': String(retryCount),
-      ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
-      ...getPlatformHeaders()},
+      {
+        Accept: 'application/json',
+        'User-Agent': this.getUserAgent(),
+        'X-Stainless-Retry-Count': String(retryCount),
+        ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
+        ...getPlatformHeaders(),
+      },
       await this.authHeaders(options),
       this._options.defaultHeaders,
       bodyHeaders,
-      options.headers
+      options.headers,
     ]);
 
     this.validateHeaders(headers);
@@ -613,11 +751,9 @@ export class Rain {
       ArrayBuffer.isView(body) ||
       body instanceof ArrayBuffer ||
       body instanceof DataView ||
-      (
-        typeof body === 'string' &&
+      (typeof body === 'string' &&
         // Preserve legacy string encoding behavior for now
-        headers.values.has('content-type')
-      ) ||
+        headers.values.has('content-type')) ||
       // `Blob` is superset of `File`
       ((globalThis as any).Blob && body instanceof (globalThis as any).Blob) ||
       // `FormData` -> `multipart/form-data`
@@ -648,7 +784,7 @@ export class Rain {
   }
 
   static Rain = this;
-  static DEFAULT_TIMEOUT = 60000 // 1 minute
+  static DEFAULT_TIMEOUT = 60000; // 1 minute
 
   static RainError = Errors.RainError;
   static APIError = Errors.APIError;
@@ -692,96 +828,88 @@ Rain.Transactions = Transactions;
 Rain.Users = Users;
 
 export declare namespace Rain {
-      export type RequestOptions = Opts.RequestOptions;
+  export type RequestOptions = Opts.RequestOptions;
 
-      export {
-  Applications as Applications
-};
+  export { Applications as Applications };
 
-export {
-  Balances as Balances,
-  type BalanceRetrieveResponse as BalanceRetrieveResponse
-};
+  export { Balances as Balances, type BalanceRetrieveResponse as BalanceRetrieveResponse };
 
-export {
-  Cards as Cards,
-  type IssuingCard as IssuingCard,
-  type IssuingCardLimit as IssuingCardLimit,
-  type IssuingCardStatus as IssuingCardStatus,
-  type CardListResponse as CardListResponse,
-  type CardRetrieveSecretsResponse as CardRetrieveSecretsResponse,
-  type CardUpdateParams as CardUpdateParams,
-  type CardListParams as CardListParams,
-  type CardRetrieveSecretsParams as CardRetrieveSecretsParams
-};
+  export {
+    Cards as Cards,
+    type IssuingCard as IssuingCard,
+    type IssuingCardLimit as IssuingCardLimit,
+    type IssuingCardStatus as IssuingCardStatus,
+    type CardListResponse as CardListResponse,
+    type CardRetrieveSecretsResponse as CardRetrieveSecretsResponse,
+    type CardUpdateParams as CardUpdateParams,
+    type CardListParams as CardListParams,
+    type CardRetrieveSecretsParams as CardRetrieveSecretsParams,
+  };
 
-export {
-  Companies as Companies,
-  type IssuingChargeCreateBody as IssuingChargeCreateBody,
-  type IssuingChargeCreateResponse as IssuingChargeCreateResponse,
-  type IssuingContract as IssuingContract,
-  type CompanyListResponse as CompanyListResponse,
-  type CompanyInitiatePaymentResponse as CompanyInitiatePaymentResponse,
-  type CompanyRetrieveBalancesResponse as CompanyRetrieveBalancesResponse,
-  type CompanyRetrieveContractsResponse as CompanyRetrieveContractsResponse,
-  type CompanyUpdateParams as CompanyUpdateParams,
-  type CompanyListParams as CompanyListParams,
-  type CompanyChargeParams as CompanyChargeParams,
-  type CompanyCreateUserParams as CompanyCreateUserParams,
-  type CompanyInitiatePaymentParams as CompanyInitiatePaymentParams
-};
+  export {
+    Companies as Companies,
+    type IssuingChargeCreateBody as IssuingChargeCreateBody,
+    type IssuingChargeCreateResponse as IssuingChargeCreateResponse,
+    type IssuingContract as IssuingContract,
+    type CompanyListResponse as CompanyListResponse,
+    type CompanyInitiatePaymentResponse as CompanyInitiatePaymentResponse,
+    type CompanyRetrieveBalancesResponse as CompanyRetrieveBalancesResponse,
+    type CompanyRetrieveContractsResponse as CompanyRetrieveContractsResponse,
+    type CompanyUpdateParams as CompanyUpdateParams,
+    type CompanyListParams as CompanyListParams,
+    type CompanyChargeParams as CompanyChargeParams,
+    type CompanyCreateUserParams as CompanyCreateUserParams,
+    type CompanyInitiatePaymentParams as CompanyInitiatePaymentParams,
+  };
 
-export {
-  Contracts as Contracts,
-  type ContractListResponse as ContractListResponse
-};
+  export { Contracts as Contracts, type ContractListResponse as ContractListResponse };
 
-export {
-  Disputes as Disputes,
-  type IssuingDispute as IssuingDispute,
-  type DisputeListResponse as DisputeListResponse,
-  type DisputeUpdateParams as DisputeUpdateParams,
-  type DisputeListParams as DisputeListParams
-};
+  export {
+    Disputes as Disputes,
+    type IssuingDispute as IssuingDispute,
+    type DisputeListResponse as DisputeListResponse,
+    type DisputeUpdateParams as DisputeUpdateParams,
+    type DisputeListParams as DisputeListParams,
+  };
 
-export {
-  Keys as Keys,
-  type KeyCreateResponse as KeyCreateResponse,
-  type KeyCreateParams as KeyCreateParams
-};
+  export {
+    Keys as Keys,
+    type KeyCreateResponse as KeyCreateResponse,
+    type KeyCreateParams as KeyCreateParams,
+  };
 
-export {
-  Payments as Payments,
-  type PaymentInitiateResponse as PaymentInitiateResponse,
-  type PaymentInitiateParams as PaymentInitiateParams
-};
+  export {
+    Payments as Payments,
+    type PaymentInitiateResponse as PaymentInitiateResponse,
+    type PaymentInitiateParams as PaymentInitiateParams,
+  };
 
-export {
-  Signatures as Signatures,
-  type SignatureRetrievePaymentSignatureParams as SignatureRetrievePaymentSignatureParams,
-  type SignatureRetrieveWithdrawalSignatureParams as SignatureRetrieveWithdrawalSignatureParams
-};
+  export {
+    Signatures as Signatures,
+    type SignatureRetrievePaymentSignatureParams as SignatureRetrievePaymentSignatureParams,
+    type SignatureRetrieveWithdrawalSignatureParams as SignatureRetrieveWithdrawalSignatureParams,
+  };
 
-export {
-  Transactions as Transactions,
-  type IssuingTransaction as IssuingTransaction,
-  type TransactionListResponse as TransactionListResponse,
-  type TransactionUpdateParams as TransactionUpdateParams,
-  type TransactionListParams as TransactionListParams,
-  type TransactionCreateDisputeParams as TransactionCreateDisputeParams
-};
+  export {
+    Transactions as Transactions,
+    type IssuingTransaction as IssuingTransaction,
+    type TransactionListResponse as TransactionListResponse,
+    type TransactionUpdateParams as TransactionUpdateParams,
+    type TransactionListParams as TransactionListParams,
+    type TransactionCreateDisputeParams as TransactionCreateDisputeParams,
+  };
 
-export {
-  Users as Users,
-  type UserListResponse as UserListResponse,
-  type UserInitiatePaymentResponse as UserInitiatePaymentResponse,
-  type UserRetrieveBalancesResponse as UserRetrieveBalancesResponse,
-  type UserRetrieveContractsResponse as UserRetrieveContractsResponse,
-  type UserCreateParams as UserCreateParams,
-  type UserUpdateParams as UserUpdateParams,
-  type UserListParams as UserListParams,
-  type UserCreateCardParams as UserCreateCardParams,
-  type UserCreateChargeParams as UserCreateChargeParams,
-  type UserInitiatePaymentParams as UserInitiatePaymentParams
-};
-    }
+  export {
+    Users as Users,
+    type UserListResponse as UserListResponse,
+    type UserInitiatePaymentResponse as UserInitiatePaymentResponse,
+    type UserRetrieveBalancesResponse as UserRetrieveBalancesResponse,
+    type UserRetrieveContractsResponse as UserRetrieveContractsResponse,
+    type UserCreateParams as UserCreateParams,
+    type UserUpdateParams as UserUpdateParams,
+    type UserListParams as UserListParams,
+    type UserCreateCardParams as UserCreateCardParams,
+    type UserCreateChargeParams as UserCreateChargeParams,
+    type UserInitiatePaymentParams as UserInitiatePaymentParams,
+  };
+}

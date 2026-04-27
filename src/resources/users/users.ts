@@ -5,7 +5,11 @@ import * as UserAPI from '../applications/user';
 import * as CardsAPI from '../cards/cards';
 import * as CompaniesAPI from '../companies/companies';
 import * as SignaturesAPI from './signatures';
-import { SignatureRetrievePaymentSignatureParams, SignatureRetrieveWithdrawalSignatureParams, Signatures } from './signatures';
+import {
+  SignatureRetrievePaymentSignatureParams,
+  SignatureRetrieveWithdrawalSignatureParams,
+  Signatures,
+} from './signatures';
 import * as CompanyAPI from '../applications/company/company';
 import { APIPromise } from '../../core/api-promise';
 import { buildHeaders } from '../../internal/headers';
@@ -58,7 +62,11 @@ export class Users extends APIResource {
    * );
    * ```
    */
-  update(userID: string, body: UserUpdateParams | null | undefined = {}, options?: RequestOptions): APIPromise<UserAPI.IssuingUser> {
+  update(
+    userID: string,
+    body: UserUpdateParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<UserAPI.IssuingUser> {
     return this._client.patch(path`/users/${userID}`, { body, ...options });
   }
 
@@ -72,7 +80,10 @@ export class Users extends APIResource {
    * const issuingUsers = await client.users.list();
    * ```
    */
-  list(query: UserListParams | null | undefined = {}, options?: RequestOptions): APIPromise<UserListResponse> {
+  list(
+    query: UserListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<UserListResponse> {
     return this._client.get('/users', { query, ...options });
   }
 
@@ -88,7 +99,10 @@ export class Users extends APIResource {
    * ```
    */
   delete(userID: string, options?: RequestOptions): APIPromise<void> {
-    return this._client.delete(path`/users/${userID}`, { ...options, headers: buildHeaders([{Accept: '*/*'}, options?.headers]) });
+    return this._client.delete(path`/users/${userID}`, {
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
   }
 
   /**
@@ -104,7 +118,11 @@ export class Users extends APIResource {
    * );
    * ```
    */
-  createCard(userID: string, body: UserCreateCardParams, options?: RequestOptions): APIPromise<CardsAPI.IssuingCard> {
+  createCard(
+    userID: string,
+    body: UserCreateCardParams,
+    options?: RequestOptions,
+  ): APIPromise<CardsAPI.IssuingCard> {
     return this._client.post(path`/users/${userID}/cards`, { body, ...options });
   }
 
@@ -121,7 +139,11 @@ export class Users extends APIResource {
    *   );
    * ```
    */
-  createCharge(userID: string, body: UserCreateChargeParams, options?: RequestOptions): APIPromise<CompaniesAPI.IssuingChargeCreateResponse> {
+  createCharge(
+    userID: string,
+    body: UserCreateChargeParams,
+    options?: RequestOptions,
+  ): APIPromise<CompaniesAPI.IssuingChargeCreateResponse> {
     return this._client.post(path`/users/${userID}/charges`, { body, ...options });
   }
 
@@ -141,7 +163,11 @@ export class Users extends APIResource {
    * );
    * ```
    */
-  initiatePayment(userID: string, body: UserInitiatePaymentParams, options?: RequestOptions): APIPromise<UserInitiatePaymentResponse> {
+  initiatePayment(
+    userID: string,
+    body: UserInitiatePaymentParams,
+    options?: RequestOptions,
+  ): APIPromise<UserInitiatePaymentResponse> {
     return this._client.post(path`/users/${userID}/payments`, { body, ...options });
   }
 
@@ -178,7 +204,7 @@ export class Users extends APIResource {
   }
 }
 
-export type UserListResponse = Array<UserAPI.IssuingUser>
+export type UserListResponse = Array<UserAPI.IssuingUser>;
 
 export interface UserInitiatePaymentResponse {
   /**
@@ -214,7 +240,7 @@ export interface UserRetrieveBalancesResponse {
   spendingPower: number;
 }
 
-export type UserRetrieveContractsResponse = Array<CompaniesAPI.IssuingContract>
+export type UserRetrieveContractsResponse = Array<CompaniesAPI.IssuingContract>;
 
 export interface UserCreateParams {
   /**
@@ -434,12 +460,12 @@ export declare namespace Users {
     type UserListParams as UserListParams,
     type UserCreateCardParams as UserCreateCardParams,
     type UserCreateChargeParams as UserCreateChargeParams,
-    type UserInitiatePaymentParams as UserInitiatePaymentParams
+    type UserInitiatePaymentParams as UserInitiatePaymentParams,
   };
 
   export {
     Signatures as Signatures,
     type SignatureRetrievePaymentSignatureParams as SignatureRetrievePaymentSignatureParams,
-    type SignatureRetrieveWithdrawalSignatureParams as SignatureRetrieveWithdrawalSignatureParams
+    type SignatureRetrieveWithdrawalSignatureParams as SignatureRetrieveWithdrawalSignatureParams,
   };
 }
