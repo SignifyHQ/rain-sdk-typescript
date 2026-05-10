@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2026-05-10)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Features
+
+* support setting headers via env ([5f90839](https://github.com/SignifyHQ/rain-sdk-typescript/commit/5f90839baf3eae38080293c67be34839c6235f04))
+
+
+### Chores
+
+* **format:** run eslint and prettier separately ([d62d72f](https://github.com/SignifyHQ/rain-sdk-typescript/commit/d62d72f205c8fe3762924c3ecbb81a426e20d45f))
+* **formatter:** run prettier and eslint separately ([c06f38f](https://github.com/SignifyHQ/rain-sdk-typescript/commit/c06f38fbb737eb361bd75d5290e390fff9db40e0))
+* **internal:** codegen related update ([6272f38](https://github.com/SignifyHQ/rain-sdk-typescript/commit/6272f389b844a8c3987533557314dfac16613eb8))
+* redact api-key headers in debug logs ([bbbc2ee](https://github.com/SignifyHQ/rain-sdk-typescript/commit/bbbc2ee88ac193c1932cd0bb53eab63499fd75e6))
+
 ## 0.1.0-alpha.8 (2026-04-22)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
