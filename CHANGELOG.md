@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2026-05-18)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Bug Fixes
+
+* **typescript:** upgrade tsc-multi so that it works with Node 26 ([aa85444](https://github.com/SignifyHQ/rain-sdk-typescript/commit/aa85444e674b7fb908ac15c6d55ebf2b66773887))
+
+
+### Chores
+
+* **tests:** remove redundant File import ([db9731f](https://github.com/SignifyHQ/rain-sdk-typescript/commit/db9731ffc4124486ad37309fe9d04a0afc71a442))
+
 ## 0.1.0-alpha.9 (2026-05-10)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
