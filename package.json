@@ -7,6 +7,10 @@
   "main": "dist/index.js",
   "type": "commonjs",
   "repository": "github:SignifyHQ/rain-sdk-typescript",
+  "homepage": "https://github.com/SignifyHQ/rain-sdk-typescript#readme",
+  "bugs": {
+    "url": "https://github.com/SignifyHQ/rain-sdk-typescript/issues"
+  },
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "files": [
