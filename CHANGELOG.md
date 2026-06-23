@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2026-06-16)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
+### Bug Fixes
+
+* **client:** send content-type header for requests with an omitted optional body ([01d8b3c](https://github.com/SignifyHQ/rain-sdk-typescript/commit/01d8b3c2812f559a82d4eb0afd9194f4d01a9509))
+
 ## 0.1.0-alpha.11 (2026-05-27)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
