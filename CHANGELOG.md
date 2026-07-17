@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.13 (2026-07-17)
+
+Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
+
+### Features
+
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([f5d8f7f](https://github.com/SignifyHQ/rain-sdk-typescript/commit/f5d8f7faba7010db0e81e88e5141367c6f12f166))
+
+
+### Bug Fixes
+
+* **ci:** bump @arethetypeswrong/cli to ^0.18.0 and run CI workflows on Node 24 ([27c20ea](https://github.com/SignifyHQ/rain-sdk-typescript/commit/27c20ea3c8e0339a3c69f0b7c9af5698675727a2))
+
+
+### Chores
+
+* **internal:** codegen related update ([53b0f0a](https://github.com/SignifyHQ/rain-sdk-typescript/commit/53b0f0ab48a2d165036192ed8bc1e5dbc6ae5303))
+
 ## 0.1.0-alpha.12 (2026-06-16)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
