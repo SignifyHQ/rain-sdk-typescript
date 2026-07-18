@@ -1,6 +1,6 @@
 {
   "name": "@rainapi/rain-sdk",
-  "version": "0.1.0-alpha.12",
+  "version": "0.1.0-alpha.13",
   "description": "The official TypeScript library for the Rain API",
   "author": "Rain <support@raincards.xyz>",
   "types": "dist/index.d.ts",
@@ -28,7 +28,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.17.0",
+    "@arethetypeswrong/cli": "^0.18.0",
     "@swc/core": "^1.3.102",
     "@swc/jest": "^0.2.29",
     "@types/jest": "^29.4.0",
