@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.14 (2026-07-30)
+
+Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
+
+### Bug Fixes
+
+* **stlc:** stop hand-edited CI workflows from blocking seals and builds ([eb98bdc](https://github.com/SignifyHQ/rain-sdk-typescript/commit/eb98bdc0d12c4ffb61581ea8107b4e6d87cafd74))
+
+
+### Chores
+
+* **internal:** codegen related update ([73cd108](https://github.com/SignifyHQ/rain-sdk-typescript/commit/73cd10826e76ae84ff8c21750e59ed03473fce19))
+
 ## 0.1.0-alpha.13 (2026-07-17)
 
 Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
