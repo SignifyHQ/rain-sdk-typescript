@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.16 (2026-09-17)
+
+Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
+
+### Chores
+
+* **ci:** publish to npm via OIDC trusted publishing ([b1acdab](https://github.com/SignifyHQ/rain-sdk-typescript/commit/b1acdab6a9e8f282c548fd03ebd40172f8726cfb))
+
+
+### Documentation
+
+* update publishing section for OIDC trusted publishing ([f086508](https://github.com/SignifyHQ/rain-sdk-typescript/commit/f086508c59383e00593e26e44fbf81a82e1b31ce))
+
 ## 0.1.0-alpha.15 (2026-09-15)
 
 Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/SignifyHQ/rain-sdk-typescript/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
