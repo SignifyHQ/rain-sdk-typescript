@@ -2,7 +2,10 @@
 
 set -eux
 
-npm config set '//registry.npmjs.org/:_authToken' "$NPM_TOKEN"
+# Token is optional: CI authenticates via OIDC trusted publishing.
+if [[ -n "${NPM_TOKEN:-}" ]]; then
+  npm config set '//registry.npmjs.org/:_authToken' "$NPM_TOKEN"
+fi
 
 yarn build
 cd dist
@@ -58,4 +61,4 @@ else
 fi
 
 # Publish with the appropriate tag
-yarn publish --tag "$TAG"
+npm publish --tag "$TAG" --access public

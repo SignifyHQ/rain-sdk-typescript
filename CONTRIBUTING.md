@@ -93,9 +93,9 @@ the changes aren't made through the automated pipeline, you may want to make rel
 
 ### Publish with a GitHub workflow
 
-You can release to package managers by using [the `Publish NPM` GitHub action](https://www.github.com/SignifyHQ/rain-sdk-typescript/actions/workflows/publish-npm.yml). This requires a setup organization or repository secret to be set up.
+You can release to package managers by using [the `Publish NPM` GitHub action](https://www.github.com/SignifyHQ/rain-sdk-typescript/actions/workflows/publish-npm.yml). It authenticates with npm via OIDC trusted publishing, so no token or secret is required. The trusted publisher is configured in the package settings on npmjs.com for this repository and workflow.
 
 ### Publish manually
 
 If you need to manually release a package, you can run the `bin/publish-npm` script with an `NPM_TOKEN` set on
-the environment.
+the environment. The token is only needed for manual publishing; the workflow does not use it.
